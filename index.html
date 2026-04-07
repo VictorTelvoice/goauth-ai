@@ -397,8 +397,9 @@
 
     /* ── AGENT POWERS ── */
     .agent-powers-wrap {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; margin-top: 4rem; align-items: start;
+      display: grid; grid-template-columns: 1fr;
+      gap: 2rem; margin-top: 4rem; align-items: start;
+      max-width: 760px; margin-left: auto; margin-right: auto;
     }
     .powers-heading {
       display: flex; align-items: center; gap: 0.6rem;
@@ -1009,7 +1010,7 @@
       <p>Cuando un banco o exchange envía el código de autorización al número de empresa, el agente lo captura y lo enruta al flujo que necesita completar la operación. Sin que nadie tenga que estar pendiente del teléfono.</p>
       <div class="usecase-tags">
         <span class="usecase-tag">✓ Banca · Exchanges</span>
-        <span class="usecase-tag">✓ Webhook instantáneo</span>
+        <span class="usecase-tag">✓ Webhook</span>
       </div>
     </div>
 
@@ -1031,8 +1032,7 @@
       </div>
       <p>Cualquier SMS que llegue al número, respuestas de clientes, alertas de sistemas, confirmaciones, es capturado por el agente y enviado a donde lo configures: webhook, CRM, canal de Slack, correo o flujo de automatización.</p>
       <div class="usecase-tags">
-        <span class="usecase-tag">✓ n8n · Make · API</span>
-        <span class="usecase-tag">✓ Telegram · Whatsaap</span>
+        <span class="usecase-tag">✓ n8n · Make · API · Telegram · Whatsaap</span>
       </div>
     </div>
 
@@ -1046,56 +1046,10 @@
   <div class="center">
     <span class="section-tag">Cómo funciona</span>
     <h2 class="section-title">El agente recibe el código.<br>Tú decides qué hacer con él.</h2>
-    <p class="section-sub">goauth.ai asigna un número de teléfono real a tu agente. Cuando cualquier plataforma envía un SMS de verificación a ese número, el agente lo recibe, extrae el código y lo entrega — a tu flujo automatizado o a una persona. Así de simple. Así de poderoso.</p>
+    <p class="section-sub">goauth.ai asigna un número de teléfono real a tu agente. Cuando cualquier plataforma envía un SMS de verificación a ese número, el agente lo recibe, extrae el código y lo entrega a tu flujo automatizado o a una persona. Así de simple. Así de poderoso.</p>
   </div>
 
-  <!-- Two-column: what the agent unlocks -->
   <div class="agent-powers-wrap">
-
-    <div class="agent-powers-col">
-      <div class="powers-heading">
-        <span class="powers-dot dot-purple"></span>
-        Con un número real, tu agente puede
-      </div>
-      <ul class="powers-list">
-        <li>
-          <span class="pl-icon">🔐</span>
-          <div>
-            <strong>Validar cualquier OTP o 2FA</strong>
-            <span>Recibe, lee y completa verificaciones SMS de cualquier plataforma — bancos, exchanges, Google, Meta, Stripe, WhatsApp Business.</span>
-          </div>
-        </li>
-        <li>
-          <span class="pl-icon">🧑‍💻</span>
-          <div>
-            <strong>Crear y activar cuentas como humano</strong>
-            <span>Se registra en plataformas que exigen número real, valida la cuenta de forma autónoma y la entrega lista para operar.</span>
-          </div>
-        </li>
-        <li>
-          <span class="pl-icon">🏦</span>
-          <div>
-            <strong>Autorizar transacciones y accesos críticos</strong>
-            <span>Sustituye al responsable de tesorería o al directivo que tiene el chip de empresa. Valida que cada operación sea legítima antes de ejecutar.</span>
-          </div>
-        </li>
-        <li>
-          <span class="pl-icon">📣</span>
-          <div>
-            <strong>Ejecutar campañas de marketing conversacional</strong>
-            <span>Envía y responde mensajes por WhatsApp, SMS o Telegram desde un número verificado — sin que ningún filtro lo detecte como bot.</span>
-          </div>
-        </li>
-        <li>
-          <span class="pl-icon">🚀</span>
-          <div>
-            <strong>Guiar el onboarding completo de usuarios</strong>
-            <span>Solicita datos, valida OTPs, activa cuentas y confirma registros paso a paso, sin que nadie de tu equipo intervenga.</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-
     <div class="agent-powers-col">
       <div class="powers-heading">
         <span class="powers-dot dot-accent"></span>
@@ -1107,7 +1061,7 @@
           <div class="af-dot"></div>
           <div class="af-content">
             <strong>Se asigna un número real al agente</strong>
-            <span>Tu agente recibe una SIM física vía telsim.io — no VoIP, no virtual. Cualquier plataforma lo reconoce como un número de empresa legítimo.</span>
+            <span>Tu agente recibe una SIM física vía telsim.io, no VoIP, no virtual. Cualquier plataforma lo reconoce como un número de empresa legítimo.</span>
           </div>
         </li>
         <li class="af-step step">
@@ -1123,7 +1077,7 @@
           <div class="af-dot"></div>
           <div class="af-content">
             <strong>El agente extrae el código</strong>
-            <span>Lee el mensaje, identifica el código de verificación y lo tiene listo para ser usado — en milisegundos, sin intervención humana.</span>
+            <span>Lee el mensaje, identifica el código de verificación y lo tiene listo para ser usado en milisegundos, sin intervención humana.</span>
           </div>
         </li>
         <li class="af-step step">
@@ -1131,7 +1085,7 @@
           <div class="af-dot"></div>
           <div class="af-content">
             <strong>Lo entrega donde lo necesitas</strong>
-            <span>El código va directo a tu flujo automatizado (n8n, Make, API) para que el proceso continúe solo — o se lo notifica a una persona si el caso lo requiere.</span>
+            <span>El código va directo a tu flujo automatizado (n8n, Make, API) para que el proceso continúe solo, o se lo notifica a una persona si el caso lo requiere.</span>
           </div>
         </li>
         <li class="af-step step">
