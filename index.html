@@ -1046,19 +1046,11 @@
         filter: blur(8px);
       }
       .stack-layer.arch-reveal,
-      .infra-form.arch-reveal {
+      .infra-form.arch-reveal,
+      .stack-point.arch-reveal,
+      .infra-banner.usecase-reveal,
+      .usecase-card.usecase-reveal {
         transform: translateY(24px) scale(0.985);
-      }
-      .stack-point.arch-reveal:nth-of-type(odd),
-      .infra-banner.usecase-reveal {
-        transform: translateX(-20px) scale(0.985);
-      }
-      .stack-point.arch-reveal:nth-of-type(even),
-      .usecase-card.usecase-reveal:nth-child(even) {
-        transform: translateX(20px) scale(0.985);
-      }
-      .usecase-card.usecase-reveal:nth-child(odd) {
-        transform: translateX(-20px) scale(0.985);
       }
       .arch-reveal.is-visible {
         opacity: 1;
