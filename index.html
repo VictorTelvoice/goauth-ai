@@ -162,20 +162,24 @@
       font-weight: 800;
     }
     .applications-row {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, max-content));
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 2.25rem;
+      gap: 1rem 2.75rem;
+      max-width: 840px;
+      margin: 0 auto;
     }
     .application-pill {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.6rem;
       color: var(--muted);
       font-size: 0.9rem;
       font-weight: 600;
       white-space: nowrap;
+      text-align: center;
     }
     .application-pill-icon {
       color: var(--accent);
@@ -334,12 +338,26 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem; margin-top: 3.5rem;
     }
-    .step { text-align: center; padding: 1.5rem; }
+    .step {
+      text-align: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transform: translateY(36px) scale(0.985);
+      filter: blur(10px);
+      transition: opacity 0.75s ease, transform 0.75s ease, filter 0.75s ease;
+      transition-delay: var(--step-delay, 0s);
+    }
+    .step.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
     .step-num {
       width: 48px; height: 48px;
       background: linear-gradient(135deg, var(--brand), var(--accent));
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-weight: 800; font-size: 1.1rem; color: #fff; margin: 0 auto 1.25rem;
+      box-shadow: 0 10px 28px rgba(108,59,255,0.22);
     }
     .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
@@ -574,11 +592,13 @@
         margin-bottom: 0.8rem;
       }
       .applications-row {
-        gap: 1rem 1.4rem;
-        justify-content: flex-start;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem 1rem;
+        max-width: 100%;
       }
       .application-pill {
         font-size: 0.86rem;
+        white-space: normal;
       }
       .testimonials-track {
         animation-duration: 46s;
@@ -755,27 +775,27 @@
     <p class="section-sub">Sin código. Sin integraciones complejas. Solo configura, entrena y lanza.</p>
   </div>
   <div class="how-grid">
-    <div class="step">
+    <div class="step" style="--step-delay: 0s;">
       <div class="step-num">1</div>
       <h3>Elige tu plan</h3>
       <p>Selecciona el plan según tu volumen de verificaciones y casos de uso.</p>
     </div>
-    <div class="step">
+    <div class="step" style="--step-delay: 0.08s;">
       <div class="step-num">2</div>
       <h3>Entrenamos tu agente</h3>
       <p>Configuramos y entrenamos un agente con tu marca, reglas y flujos específicos.</p>
     </div>
-    <div class="step">
+    <div class="step" style="--step-delay: 0.16s;">
       <div class="step-num">3</div>
       <h3>SIM real asignada</h3>
       <p>Tu agente recibe una capa real de comunicacion para validar, autenticar y ejecutar procesos sensibles.</p>
     </div>
-    <div class="step">
+    <div class="step" style="--step-delay: 0.24s;">
       <div class="step-num">4</div>
       <h3>Opera 24/7</h3>
       <p>El agente verifica, autentica y reporta de forma autónoma. Tú solo monitoreas.</p>
     </div>
-    <div class="step">
+    <div class="step" style="--step-delay: 0.32s;">
       <div class="step-num">5</div>
       <h3>Escala sin límites</h3>
       <p>Agrega más agentes y números según crezca tu operación. Sin contratos.</p>
@@ -1009,6 +1029,7 @@
   (() => {
     const toggleButtons = document.querySelectorAll('[data-billing]');
     const priceCards = document.querySelectorAll('.price-card');
+    const steps = document.querySelectorAll('.step');
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1035,6 +1056,24 @@
     });
 
     applyBilling('monthly');
+
+    if ('IntersectionObserver' in window) {
+      const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            stepObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.22,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      steps.forEach((step) => stepObserver.observe(step));
+    } else {
+      steps.forEach((step) => step.classList.add('is-visible'));
+    }
   })();
 </script>
 </body>
