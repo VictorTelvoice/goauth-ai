@@ -626,10 +626,14 @@
     }
 
     /* SMS Command strip */
-    .sms-command-strip {
+    .sms-command-wrap {
       margin-top: 3.5rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .sms-command-strip {
       background: linear-gradient(135deg, rgba(0,229,192,0.06), rgba(108,59,255,0.08));
       border: 1px solid rgba(0,229,192,0.2);
       border-radius: 20px; padding: 2.5rem 3rem;
@@ -647,7 +651,12 @@
       letter-spacing: -0.02em; line-height: 1.3;
     }
     .sms-cmd-left p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
-    .sms-cmd-right { display: flex; flex-direction: column; gap: 0.65rem; }
+    .sms-cmd-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding-top: 1rem;
+    }
     .sms-bubble {
       padding: 0.7rem 1rem; border-radius: 12px;
       font-size: 0.82rem; line-height: 1.5; max-width: 88%;
@@ -674,7 +683,7 @@
     .sms-cmd-right .sms-bubble:nth-child(2) { animation-delay: 0.42s; }
     .sms-cmd-right .sms-bubble:nth-child(3) { animation-delay: 0.86s; }
     .sms-cmd-right .sms-bubble:nth-child(4) { animation-delay: 1.24s; }
-    .sms-command-strip.is-active .sms-bubble {
+    .sms-command-wrap.is-active .sms-bubble {
       animation: smsArrival 0.7s ease-out forwards;
     }
 
@@ -693,14 +702,18 @@
 
     @media (max-width: 900px) {
       .agent-powers-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-      .sms-command-strip { grid-template-columns: 1fr; }
+      .sms-command-wrap { grid-template-columns: 1fr; gap: 1rem; }
+      .sms-command-strip { padding: 2rem 1.4rem; }
       .sms-cmd-right {
         width: 100%;
-        margin-top: 0.35rem;
+        margin-top: 0;
+        padding-top: 0;
       }
       .sms-bubble {
         max-width: 100%;
       }
+      .sms-out { margin-left: auto; margin-right: 0; transform: rotate(-1deg); }
+      .sms-in { margin-left: 0; margin-right: auto; transform: rotate(1deg); }
       .agent-flow {
         grid-template-columns: 1fr;
         gap: 1.65rem;
@@ -1337,11 +1350,13 @@
   </div>
 
   <!-- SMS Command highlight strip -->
-  <div class="sms-command-strip arch-reveal" style="--arch-delay: 0.1s;">
-    <div class="sms-cmd-left">
-      <div class="sms-cmd-badge">Sin internet</div>
-      <h4>Controla tu agente por SMS desde cualquier lugar</h4>
-      <p>Envía instrucciones a tu agente por SMS desde un número previamente validado. No necesitas apps, WiFi ni datos móviles. El agente recibe la orden, la procesa y actúa, con una capa extra de seguridad: solo responde a mensajes autorizados y la instrucción viaja por SMS, sin dejar exposición operativa en internet. Útil en zonas sin cobertura de datos, emergencias o situaciones donde la velocidad es crítica.</p>
+  <div class="sms-command-wrap arch-reveal" style="--arch-delay: 0.1s;">
+    <div class="sms-command-strip">
+      <div class="sms-cmd-left">
+        <div class="sms-cmd-badge">Sin internet</div>
+        <h4>Controla tu agente por SMS desde cualquier lugar</h4>
+        <p>Envía instrucciones a tu agente por SMS desde un número previamente validado. No necesitas apps, WiFi ni datos móviles. El agente recibe la orden, la procesa y actúa, con una capa extra de seguridad: solo responde a mensajes autorizados y la instrucción viaja por SMS, sin dejar exposición operativa en internet. Útil en zonas sin cobertura de datos, emergencias o situaciones donde la velocidad es crítica.</p>
+      </div>
     </div>
     <div class="sms-cmd-right">
       <div class="sms-bubble sms-out">
@@ -1597,13 +1612,19 @@
 
 <script>
   (() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('pageshow', () => window.scrollTo(0, 0));
+
     const toggleButtons = document.querySelectorAll('[data-billing]');
     const priceCards = document.querySelectorAll('.price-card');
     const steps = document.querySelectorAll('.step');
     const architectureItems = document.querySelectorAll('.arch-reveal');
     const usecaseItems = document.querySelectorAll('.usecase-reveal');
     const priceRevealItems = document.querySelectorAll('.price-reveal');
-    const smsCommandStrip = document.querySelector('.sms-command-strip');
+    const smsCommandStrip = document.querySelector('.sms-command-wrap');
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1685,8 +1706,8 @@
               }
             });
           }, {
-            threshold: 0.3,
-            rootMargin: '0px 0px -6% 0px'
+            threshold: 0.22,
+            rootMargin: '0px 0px -4% 0px'
           });
 
           smsObserver.observe(smsCommandStrip);
