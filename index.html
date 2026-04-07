@@ -209,6 +209,62 @@
       border: 1px solid rgba(96,165,250,0.25);
       background: rgba(96,165,250,0.08);
     }
+    .testimonials-section {
+      background: var(--dark);
+      padding-top: 3.2rem;
+      padding-bottom: 3.4rem;
+      overflow: hidden;
+    }
+    .testimonials-slider {
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+    .testimonials-track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      padding: 0 0.5rem;
+      animation: testimonialsScroll 38s linear infinite;
+    }
+    .testimonial-card {
+      width: calc((100vw - 10rem) / 4);
+      min-width: 240px;
+      max-width: 310px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem 1rem 1.1rem;
+    }
+    .testimonial-stars {
+      color: #FCD34D;
+      letter-spacing: 0.12em;
+      font-size: 0.86rem;
+      margin-bottom: 0.7rem;
+    }
+    .testimonial-copy {
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin-bottom: 0.9rem;
+    }
+    .testimonial-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .testimonial-name {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .testimonial-note {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
 
     /* ── SECTIONS ── */
     section { padding: 6rem 5%; }
@@ -441,6 +497,10 @@
       from { transform: translateX(0); }
       to { transform: translateX(calc(-50% - 0.5rem)); }
     }
+    @keyframes testimonialsScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 0.5rem)); }
+    }
 
     /* ── CTA FINAL ── */
     .cta-section {
@@ -525,6 +585,14 @@
       }
       .application-card {
         width: 248px;
+      }
+      .testimonials-track {
+        animation-duration: 46s;
+      }
+      .testimonial-card {
+        width: 78vw;
+        min-width: 78vw;
+        max-width: 78vw;
       }
       .infra-banner { flex-direction: column; }
       .pricing-grid {
@@ -750,12 +818,96 @@
   </div>
 </section>
 
+<section class="testimonials-section" aria-label="Testimonios">
+  <div class="center">
+    <span class="section-tag">Testimonios</span>
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <p class="section-sub">Sección preparada para mostrar reseñas reales con calificación visible y lectura rápida en desktop y móvil.</p>
+  </div>
+  <div class="testimonials-slider">
+    <div class="testimonials-track">
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espacio reservado para un testimonio real verificado de cliente en español.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Testimonio pendiente</span><span>ES</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Space reserved for a verified real customer testimonial in English.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Pending testimonial</span><span>EN</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espaço reservado para um depoimento real verificado de cliente em português.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Depoimento pendente</span><span>PT</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espacio reservado para un testimonio real verificado de cliente en español.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Testimonio pendiente</span><span>ES</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Space reserved for a verified real customer testimonial in English.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Pending testimonial</span><span>EN</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espaço reservado para um depoimento real verificado de cliente em português.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Depoimento pendente</span><span>PT</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espacio reservado para un testimonio real verificado de cliente en español.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Testimonio pendiente</span><span>ES</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Space reserved for a verified real customer testimonial in English.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Pending testimonial</span><span>EN</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espaço reservado para um depoimento real verificado de cliente em português.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Depoimento pendente</span><span>PT</span></div>
+      </article>
+      <article class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espacio reservado para un testimonio real verificado de cliente en español.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Testimonio pendiente</span><span>ES</span></div>
+      </article>
+
+      <article class="testimonial-card" aria-hidden="true">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espacio reservado para un testimonio real verificado de cliente en español.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Testimonio pendiente</span><span>ES</span></div>
+      </article>
+      <article class="testimonial-card" aria-hidden="true">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Space reserved for a verified real customer testimonial in English.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Pending testimonial</span><span>EN</span></div>
+      </article>
+      <article class="testimonial-card" aria-hidden="true">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espaço reservado para um depoimento real verificado de cliente em português.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Depoimento pendente</span><span>PT</span></div>
+      </article>
+      <article class="testimonial-card" aria-hidden="true">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-copy">Espacio reservado para un testimonio real verificado de cliente en español.</p>
+        <div class="testimonial-meta"><span class="testimonial-name">Testimonio pendiente</span><span>ES</span></div>
+      </article>
+    </div>
+  </div>
+  <p class="testimonial-note">Reemplazaremos estos espacios con testimonios reales verificados cuando me compartas las citas finales.</p>
+</section>
+
 <!-- STACK: GOAUTH -->
 <section id="stack" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="center">
     <span class="section-tag">Arquitectura</span>
-    <h2 class="section-title">Inteligencia encima<br>de infraestructura real</h2>
-    <p class="section-sub">Dos capas que trabajan juntas: el agente que piensa y el número que actúa.</p>
+    <h2 class="section-title">Inteligencia que opera sobre infraestructura real</h2>
+    <p class="section-sub">Tu agente no solo piensa también actúa con números reales, OTPs y ejecución confiable en el mundo real.</p>
   </div>
   <div class="stack-wrap">
     <div class="stack-diagram">
@@ -813,8 +965,8 @@
 <section id="casos">
   <div class="center">
     <span class="section-tag">Casos de uso</span>
-    <h2 class="section-title">Un agente, múltiples<br>superpoderes</h2>
-    <p class="section-sub">Cada agente goauth.ai se despliega con una capa real de comunicacion y se entrena para tu caso de uso especifico.</p>
+    <h2 class="section-title">IA lista para actuar en el mundo real</h2>
+    <p class="section-sub">Cada agente de goauth.ai integra comunicación real y entrenamiento orientado a la tarea que necesitas automatizar.</p>
   </div>
   <div class="usecases-grid">
     <div class="usecase-card">
