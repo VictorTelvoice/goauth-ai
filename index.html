@@ -390,6 +390,27 @@
     .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
 
+    /* ── SCENARIO BOX ── */
+    .scenario-box {
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      background: linear-gradient(135deg, rgba(108,59,255,0.08), rgba(0,229,192,0.04));
+      border: 1px solid rgba(108,59,255,0.25);
+      border-radius: 16px; padding: 2rem 2.25rem;
+      max-width: 820px; margin: 3rem auto 0;
+    }
+    .scenario-icon {
+      font-size: 2.2rem; flex-shrink: 0;
+      width: 56px; height: 56px;
+      background: rgba(108,59,255,0.12); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .scenario-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+    }
+    .scenario-text p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; }
+    .scenario-text strong { color: var(--text); }
+
     /* ── INFRA BANNER ── */
     .infra-banner {
       background: linear-gradient(135deg, rgba(29,78,216,0.15), rgba(29,78,216,0.05));
@@ -916,35 +937,45 @@
 <!-- CÓMO FUNCIONA -->
 <section id="como-funciona" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="center">
-    <span class="section-tag">Proceso</span>
-    <h2 class="section-title">Activa tu agente en minutos</h2>
-    <p class="section-sub">Sin integraciones complejas. Configura, ajusta y lanza tu operación desde un solo flujo.</p>
+    <span class="section-tag">Cómo funciona</span>
+    <h2 class="section-title">El guardián que nunca<br>duerme, nunca falla</h2>
+    <p class="section-sub">En toda empresa hay una persona de alto rango que tiene en su poder el número o chip con acceso a los sistemas críticos. goauth.ai se convierte en ese guardián — disponible 24/7, sin vacaciones, sin errores humanos.</p>
   </div>
-  <div class="how-grid">
+
+  <!-- Scenario callout -->
+  <div class="scenario-box arch-reveal" style="--arch-delay: 0s;">
+    <div class="scenario-icon">🏦</div>
+    <div class="scenario-text">
+      <div class="scenario-label">El escenario real</div>
+      <p>Un director financiero o responsable de tesorería tiene asignado el número de empresa vinculado a las cuentas bancarias, exchanges o plataformas críticas. Cuando llega una solicitud de transferencia o acceso, <strong>solo esa persona puede recibir el OTP y validar</strong> que la operación es legítima. Es el último eslabón de seguridad — y es humano.</p>
+    </div>
+  </div>
+
+  <div class="how-grid" style="margin-top: 3rem;">
     <div class="step" style="--step-delay: 0s;">
       <div class="step-num">1</div>
-      <h3>Elige tu plan</h3>
-      <p>Selecciona el plan según tu volumen de verificaciones y casos de uso.</p>
+      <h3>El agente toma el rol</h3>
+      <p>goauth.ai asigna un agente inteligente que asume la responsabilidad del guardián. Recibe un número real de empresa — SIM física, no VoIP — vinculado a tus cuentas y sistemas críticos.</p>
     </div>
     <div class="step" style="--step-delay: 0.08s;">
       <div class="step-num">2</div>
-      <h3>Entrenamos tu agente</h3>
-      <p>Configuramos y entrenamos un agente con tu marca, reglas y flujos específicos.</p>
+      <h3>Llega la solicitud</h3>
+      <p>Un banco, exchange o plataforma envía un OTP o solicitud de autorización al número de la empresa. El agente lo recibe al instante vía webhook en tiempo real — sin demoras, sin intermediarios.</p>
     </div>
     <div class="step" style="--step-delay: 0.16s;">
       <div class="step-num">3</div>
-      <h3>SIM real asignada</h3>
-      <p>Tu agente recibe una capa real de comunicacion para validar, autenticar y ejecutar procesos sensibles.</p>
+      <h3>El agente analiza y decide</h3>
+      <p>Antes de actuar, el agente valida el contexto: ¿la operación fue iniciada por un flujo legítimo? ¿Coincide con las reglas de negocio configuradas? ¿Es el monto, origen y horario esperado?</p>
     </div>
     <div class="step" style="--step-delay: 0.24s;">
       <div class="step-num">4</div>
-      <h3>Opera 24/7</h3>
-      <p>El agente verifica, autentica y reporta de forma autónoma. Tú solo monitoreas.</p>
+      <h3>Autoriza o bloquea</h3>
+      <p>Si todo coincide, el agente completa la verificación de forma autónoma. Si detecta algo fuera de parámetro, bloquea y escala la alerta al responsable humano en segundos.</p>
     </div>
     <div class="step" style="--step-delay: 0.32s;">
       <div class="step-num">5</div>
-      <h3>Escala sin límites</h3>
-      <p>Agrega más agentes y números según crezca tu operación. Sin contratos.</p>
+      <h3>Tú solo supervisas</h3>
+      <p>Cada operación queda registrada con trazabilidad completa. El dinero de tu empresa siempre tiene un guardián activo — sin depender de que una persona esté disponible.</p>
     </div>
   </div>
 </section>
