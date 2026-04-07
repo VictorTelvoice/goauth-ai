@@ -242,68 +242,6 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem; margin-top: 3.5rem;
     }
-    .process-visual {
-      position: relative;
-      max-width: 980px;
-      margin: 3rem auto 0;
-      padding: 2rem 1.5rem 0;
-    }
-    .process-line {
-      position: absolute;
-      top: 38px;
-      left: 9%;
-      right: 9%;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(108,59,255,0.12), rgba(0,229,192,0.55), rgba(108,59,255,0.12));
-      overflow: hidden;
-    }
-    .process-line::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      width: 120px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
-      animation: processBeam 3.8s linear infinite;
-    }
-    .process-nodes {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .process-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.9rem;
-      text-align: center;
-    }
-    .process-dot {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #fff, #8B5CF6 55%, #4C1D95 100%);
-      box-shadow: 0 0 0 8px rgba(108,59,255,0.08), 0 0 24px rgba(108,59,255,0.45);
-      animation: processPulse 2.4s ease-in-out infinite;
-    }
-    .process-node:nth-child(2) .process-dot { animation-delay: 0.2s; }
-    .process-node:nth-child(3) .process-dot { animation-delay: 0.4s; }
-    .process-node:nth-child(4) .process-dot { animation-delay: 0.6s; }
-    .process-node:nth-child(5) .process-dot { animation-delay: 0.8s; }
-    .process-node strong {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-    .process-node span {
-      color: var(--muted);
-      font-size: 0.83rem;
-      line-height: 1.55;
-      max-width: 150px;
-    }
     .step { text-align: center; padding: 1.5rem; }
     .step-num {
       width: 48px; height: 48px;
@@ -403,15 +341,6 @@
     .price-btn-filled:hover { box-shadow: 0 0 40px rgba(108,59,255,0.55); }
     .pricing-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem; }
 
-    @keyframes processBeam {
-      from { transform: translateX(-140px); }
-      to { transform: translateX(calc(100vw - 120px)); }
-    }
-    @keyframes processPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 8px rgba(108,59,255,0.08), 0 0 24px rgba(108,59,255,0.35); }
-      50% { transform: scale(1.12); box-shadow: 0 0 0 10px rgba(0,229,192,0.14), 0 0 34px rgba(0,229,192,0.4); }
-    }
-
     /* ── CTA FINAL ── */
     .cta-section {
       text-align: center;
@@ -444,13 +373,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .stack-wrap { grid-template-columns: 1fr; }
-      .process-nodes {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .process-line {
-        left: 14%;
-        right: 14%;
-      }
     }
     @media (max-width: 768px) {
       nav ul { display: none; }
@@ -486,28 +408,6 @@
       }
       .trust-items { gap: 1.5rem; }
       .infra-banner { flex-direction: column; }
-      .process-visual {
-        padding: 1.5rem 0 0;
-      }
-      .process-line {
-        display: none;
-      }
-      .process-nodes {
-        display: grid;
-        grid-template-columns: repeat(5, 78%);
-        gap: 0.9rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: 0 1rem 0.5rem;
-      }
-      .process-node {
-        scroll-snap-align: start;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 1rem;
-        min-height: 168px;
-      }
       .pricing-grid {
         display: grid;
         grid-auto-flow: column;
@@ -665,36 +565,6 @@
     <span class="section-tag">Proceso</span>
     <h2 class="section-title">De cero a agente activo<br>en minutos</h2>
     <p class="section-sub">Sin código. Sin integraciones complejas. Solo configura, entrena y lanza.</p>
-  </div>
-  <div class="process-visual">
-    <div class="process-line"></div>
-    <div class="process-nodes">
-      <div class="process-node">
-        <div class="process-dot"></div>
-        <strong>Plan</strong>
-        <span>Definimos el caso de uso y el nivel de autonomia que necesita tu operacion.</span>
-      </div>
-      <div class="process-node">
-        <div class="process-dot"></div>
-        <strong>Entrenamiento</strong>
-        <span>Ajustamos prompts, reglas, respuestas y criterios de validacion para tu flujo.</span>
-      </div>
-      <div class="process-node">
-        <div class="process-dot"></div>
-        <strong>Canales</strong>
-        <span>Conectamos numero real, mensajeria, eventos y salidas para operar en el mundo real.</span>
-      </div>
-      <div class="process-node">
-        <div class="process-dot"></div>
-        <strong>Activacion</strong>
-        <span>Lanzamos el agente con supervision inicial y pruebas sobre escenarios reales.</span>
-      </div>
-      <div class="process-node">
-        <div class="process-dot"></div>
-        <strong>Escala</strong>
-        <span>Multiplicas agentes y casos de uso sin rehacer la arquitectura desde cero.</span>
-      </div>
-    </div>
   </div>
   <div class="how-grid">
     <div class="step">
