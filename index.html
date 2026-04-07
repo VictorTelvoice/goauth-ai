@@ -154,79 +154,48 @@
 
     /* ── APPLICATIONS BAND ── */
     .applications-band {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0)),
-        var(--dark2);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding: 1.4rem 5% 1.55rem;
-    }
-    .applications-shell {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 1rem 1.1rem 1.15rem;
-      border-radius: 20px;
-      border: 1px solid rgba(122, 95, 255, 0.12);
-      background:
-        radial-gradient(circle at top left, rgba(108,59,255,0.14), transparent 32%),
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03),
-        0 18px 36px rgba(7, 8, 18, 0.2);
-    }
-    .applications-header {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .applications-header strong {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 30px;
-      padding: 0 0.9rem;
-      border-radius: 999px;
-      color: rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      width: 100%;
+      margin-top: 1.35rem;
+      padding: 0 0 1.2rem;
     }
     .applications-row {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.85rem;
-      max-width: 1040px;
+      gap: 0.55rem 0.9rem;
+      max-width: 1120px;
       margin: 0 auto;
+      padding-top: 1.9rem;
+      padding-bottom: 0.35rem;
+      position: relative;
+    }
+    .applications-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 112px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(132, 102, 255, 0.46), rgba(255,255,255,0));
     }
     .application-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.48rem;
-      min-height: 38px;
-      padding: 0 0.9rem;
-      border-radius: 999px;
-      color: rgba(235, 238, 255, 0.88);
-      font-size: 0.73rem;
-      font-weight: 700;
+      gap: 0.38rem;
+      color: rgba(226, 231, 245, 0.76);
+      font-size: 0.71rem;
+      font-weight: 600;
       white-space: nowrap;
       text-align: center;
-      background: rgba(13, 14, 28, 0.48);
-      border: 1px solid rgba(122, 95, 255, 0.14);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+      opacity: 0.94;
     }
     .application-pill-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       line-height: 1;
+      opacity: 0.95;
     }
     .testimonials-section {
       background: var(--dark);
@@ -337,11 +306,18 @@
     .layer-name { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.4rem; }
     .layer-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
     .layer-pills {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.32rem;
+      margin-top: 0.75rem;
+      align-items: center;
     }
     .pill {
-      font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.6rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 0.14rem 0.48rem;
       border-radius: 100px; border: 1px solid;
+      white-space: nowrap;
     }
     .pill-purple { border-color: rgba(139,92,246,0.4); color: var(--brand-light); background: rgba(139,92,246,0.08); }
     .pill-blue { border-color: rgba(96,165,250,0.4); color: #60A5FA; background: rgba(96,165,250,0.08); }
@@ -426,12 +402,19 @@
       background: linear-gradient(135deg, var(--brand-light), var(--accent));
       box-shadow: 0 0 0 4px rgba(84,217,255,0.06);
     }
-    .usecase-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.2rem; }
+    .usecase-tags {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.35rem;
+      margin-top: 1.15rem;
+      align-items: center;
+    }
     .usecase-tag {
       display: inline-block;
-      font-size: 0.7rem; font-weight: 600; color: #60A5FA;
+      font-size: 0.64rem; font-weight: 600; color: #60A5FA;
       background: rgba(29,78,216,0.1); border: 1px solid rgba(29,78,216,0.22);
-      padding: 0.15rem 0.55rem; border-radius: 100px;
+      padding: 0.14rem 0.48rem; border-radius: 100px;
+      white-space: nowrap;
     }
     @media (max-width: 960px) {
       .usecases-grid { grid-template-columns: repeat(2, 1fr); }
@@ -527,7 +510,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 0.95rem;
+      gap: 1.05rem;
       position: relative;
       padding: 0;
       z-index: 1;
@@ -683,58 +666,97 @@
     }
     .af-arrow { display: none; }
     .af-content {
-      padding: 0 0.12rem;
+      padding: 0 0.2rem;
       min-height: 100%;
     }
     .af-content strong {
       display: block;
-      font-size: 0.94rem;
+      font-size: 0.98rem;
       font-weight: 800;
-      margin-bottom: 0.18rem;
+      margin-bottom: 0;
       letter-spacing: -0.01em;
+      line-height: 1.38;
     }
     .af-content span {
-      color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.48;
+      display: none;
     }
 
-    /* SMS Command strip */
+    /* Offline control section */
+    .offline-header {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .offline-header .section-sub {
+      max-width: 700px;
+    }
     .sms-command-wrap {
-      margin-top: 3.5rem;
+      margin-top: 3.2rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.65rem;
       align-items: start;
     }
     .sms-command-strip {
-      background: linear-gradient(135deg, rgba(0,229,192,0.06), rgba(108,59,255,0.08));
-      border: 1px solid rgba(0,229,192,0.2);
-      border-radius: 20px; padding: 2.5rem 3rem;
+      background:
+        radial-gradient(circle at top left, rgba(108,59,255,0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(122, 95, 255, 0.16);
+      border-radius: 22px;
+      padding: 2.35rem 2.5rem;
+      box-shadow: 0 18px 42px rgba(7, 8, 18, 0.2);
     }
-    .sms-cmd-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(0,229,192,0.12); border: 1px solid rgba(0,229,192,0.3);
-      color: var(--accent); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem;
-    }
-    .sms-cmd-badge::before { content: '📡'; font-size: 0.8rem; }
     .sms-cmd-left h4 {
-      font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem;
-      letter-spacing: -0.02em; line-height: 1.3;
+      font-size: 1.26rem; font-weight: 800; margin-bottom: 0.9rem;
+      letter-spacing: -0.02em; line-height: 1.25;
     }
-    .sms-cmd-left p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
+    .sms-cmd-left p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .offline-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 0;
+      padding: 0;
+    }
+    .offline-list li {
+      position: relative;
+      padding-left: 1rem;
+      color: rgba(226, 231, 245, 0.78);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .offline-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.58rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand-light), var(--accent));
+      box-shadow: 0 0 0 4px rgba(84,217,255,0.06);
+    }
     .sms-cmd-right {
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
-      padding-top: 1.35rem;
+      gap: 0.85rem;
+      padding-top: 0.15rem;
+    }
+    .offline-demo-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.72rem;
+      padding: 0.15rem 0 0;
     }
     .sms-bubble {
       --bubble-x: 0px;
-      padding: 0.7rem 1rem; border-radius: 12px;
-      font-size: 0.82rem; line-height: 1.5; max-width: 88%;
+      padding: 0.78rem 0.88rem; border-radius: 14px;
+      font-size: 0.82rem; line-height: 1.5; max-width: 100%;
       opacity: 0;
       transform: translate3d(var(--bubble-x), 14px, 0);
       filter: blur(6px);
@@ -747,29 +769,30 @@
       filter: blur(0);
     }
     .sms-meta {
-      display: block; font-size: 0.68rem; font-weight: 700;
+      display: block; font-size: 0.64rem; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase;
-      opacity: 0.55; margin-bottom: 0.3rem;
+      opacity: 0.55; margin-bottom: 0.24rem;
     }
     .sms-out {
-      --bubble-x: 36px;
-      background: rgba(108,59,255,0.18); border: 1px solid rgba(108,59,255,0.25);
+      --bubble-x: 34px;
+      background: rgba(108,59,255,0.16); border: 1px solid rgba(108,59,255,0.24);
       color: var(--text); align-self: flex-end; margin-left: auto;
       border-bottom-right-radius: 4px;
+      max-width: 88%;
     }
     .sms-in {
-      --bubble-x: -36px;
+      --bubble-x: -34px;
       background: rgba(0,229,192,0.1); border: 1px solid rgba(0,229,192,0.2);
       color: var(--text); align-self: flex-start;
       border-top-left-radius: 14px;
-      border-bottom-left-radius: 2px;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 12px));
+      border-bottom-left-radius: 4px;
+      max-width: 88%;
     }
 
     @media (max-width: 900px) {
       .agent-powers-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
       .sms-command-wrap { grid-template-columns: 1fr; gap: 2rem; }
-      .sms-command-strip { padding: 2rem 1.4rem; }
+      .sms-command-strip { padding: 1.9rem 1.35rem; }
       .sms-cmd-right {
         width: 100%;
         margin-top: 0;
@@ -778,8 +801,8 @@
       .sms-bubble {
         max-width: 100%;
       }
-      .sms-out { --bubble-x: 42px; margin-left: auto; margin-right: 0; }
-      .sms-in { --bubble-x: -42px; margin-left: 0; margin-right: auto; }
+      .sms-out { --bubble-x: 38px; margin-left: auto; margin-right: 0; }
+      .sms-in { --bubble-x: -38px; margin-left: 0; margin-right: auto; }
       .agent-flow {
         grid-template-columns: 1fr;
         gap: 1.65rem;
@@ -1094,33 +1117,28 @@
         width: 100%;
       }
       .applications-band {
-        padding: 1.15rem 1rem 1.3rem;
-      }
-      .applications-shell {
-        padding: 0.9rem 0.75rem 0.95rem;
-        border-radius: 18px;
-      }
-      .applications-header {
-        margin-bottom: 0.7rem;
+        margin-top: 1rem;
+        padding: 0 0 0.85rem;
       }
       .applications-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.68rem 0.68rem;
+        gap: 0.45rem 0.8rem;
         max-width: 100%;
+        padding-top: 1.35rem;
+        padding-bottom: 0.15rem;
+      }
+      .applications-row::before {
+        width: 84px;
       }
       .application-pill {
-        min-height: 34px;
-        padding: 0 0.55rem;
-        font-size: 0.59rem;
+        font-size: 0.6rem;
         white-space: nowrap;
-        gap: 0.3rem;
+        gap: 0.28rem;
         letter-spacing: -0.01em;
-        justify-content: flex-start;
+        justify-content: center;
       }
       .application-pill-icon {
-        width: 14px;
-        height: 14px;
         font-size: 0.62rem;
       }
       .arch-reveal {
@@ -1218,30 +1236,21 @@
 <!-- HERO -->
 <section class="hero">
   <div class="badge">Agentes de Verificación con IA</div>
-  <h1>El agente que <span class="highlight">verifica,<br>autentica<br>y convierte</span> por ti</h1>
+  <h1>Controla <span class="highlight">operaciones críticas</span><br>incluso fuera de internet</h1>
   <p class="hero-sub">
-    Automatiza verificaciones y confirmaciones con agentes que operan sobre infraestructura telefónica real.
+    Opera agentes, automatizaciones y acciones críticas por SMS autorizado, incluso sin apps, paneles o conexión de datos.
   </p>
   <div class="hero-btns">
     <a href="#precios" class="btn-primary">Ver planes con 70% OFF →</a>
     <a href="#como-funciona" class="btn-secondary">¿Cómo funciona?</a>
   </div>
-</section>
-
-<!-- APPLICATIONS BAND -->
-<section class="applications-band" aria-label="Aplicaciones">
-  <div class="applications-shell">
-    <div class="applications-header">
-      <strong>Aplicaciones</strong>
-    </div>
-    <div class="applications-row">
-      <div class="application-pill"><span class="application-pill-icon">🔐</span><span>Verificación de identidad</span></div>
-      <div class="application-pill"><span class="application-pill-icon">💸</span><span>Aprobaciones financieras</span></div>
-      <div class="application-pill"><span class="application-pill-icon">🤖</span><span>Control de agentes</span></div>
-      <div class="application-pill"><span class="application-pill-icon">🚨</span><span>Protocolos de emergencia</span></div>
-      <div class="application-pill"><span class="application-pill-icon">📡</span><span>Operación offline</span></div>
-      <div class="application-pill"><span class="application-pill-icon">🛡️</span><span>Fallback operativo</span></div>
-    </div>
+  <div class="applications-row">
+    <div class="application-pill"><span class="application-pill-icon">🔐</span><span>Verificación de identidad</span></div>
+    <div class="application-pill"><span class="application-pill-icon">💸</span><span>Aprobaciones financieras</span></div>
+    <div class="application-pill"><span class="application-pill-icon">🤖</span><span>Control de agentes</span></div>
+    <div class="application-pill"><span class="application-pill-icon">🚨</span><span>Protocolos de emergencia</span></div>
+    <div class="application-pill"><span class="application-pill-icon">📡</span><span>Operación offline</span></div>
+    <div class="application-pill"><span class="application-pill-icon">🛡️</span><span>Fallback operativo</span></div>
   </div>
 </section>
 
@@ -1249,55 +1258,55 @@
 <section id="stack" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="center arch-reveal" style="--arch-delay: 0s;">
     <span class="section-tag">Arquitectura</span>
-    <h2 class="section-title">Inteligencia que opera sobre infraestructura real</h2>
-    <p class="section-sub">Tu agente no solo piensa también actúa con números reales y ejecución confiable en el mundo real.</p>
+    <h2 class="section-title">Control real para operaciones que no pueden detenerse</h2>
+    <p class="section-sub">goauth combina agentes, números autorizados y ejecución por SMS para aprobar, activar, pausar o escalar acciones críticas incluso fuera de internet.</p>
   </div>
   <div class="stack-wrap arch-reveal" style="--arch-delay: 0.08s;">
     <div class="stack-diagram">
       <div class="stack-layer layer-goauth arch-reveal" style="--arch-delay: 0.14s;">
-        <div class="layer-label lbl-goauth">Capa de Agente</div>
+        <div class="layer-label lbl-goauth">Capa de Control</div>
         <div class="layer-name">goauth.ai</div>
-        <div class="layer-desc">Agentes entrenados con IA que razonan, conversan y toman decisiones de verificación de forma autónoma.</div>
+        <div class="layer-desc">Una capa de decisión que interpreta instrucciones, valida contexto y ejecuta acciones críticas sobre agentes, equipos o sistemas.</div>
         <div class="layer-pills">
-          <span class="pill pill-purple">Verificación de identidad</span>
-          <span class="pill pill-purple">Transferencias</span>
-          <span class="pill pill-purple">Marketing</span>
-          <span class="pill pill-purple">Onboarding</span>
+          <span class="pill pill-purple">Aprobaciones</span>
+          <span class="pill pill-purple">Control de agentes</span>
+          <span class="pill pill-purple">Protocolos</span>
+          <span class="pill pill-purple">Operación offline</span>
         </div>
       </div>
       <div class="stack-layer layer-infra arch-reveal" style="--arch-delay: 0.2s;">
-        <div class="layer-label lbl-infra">Capa de Comunicacion</div>
+        <div class="layer-label lbl-infra">Capa de Ejecución</div>
         <div class="layer-name">goauth.ai Runtime</div>
-        <div class="layer-desc">Canales reales de comunicacion, eventos y automatizacion operativa para ejecutar verificaciones y procesos sensibles.</div>
+        <div class="layer-desc">Infraestructura SMS autorizada para enviar, recibir y procesar órdenes reales con trazabilidad y continuidad operativa.</div>
         <div class="layer-pills">
-          <span class="pill pill-blue">Whatsaap / Telegram</span>
-          <span class="pill pill-blue">Make / N8N</span>
-          <span class="pill pill-blue">API REST</span>
-          <span class="pill pill-blue">Webhooks</span>
+          <span class="pill pill-blue">SMS autorizado</span>
+          <span class="pill pill-blue">Fallback operativo</span>
+          <span class="pill pill-blue">API / Webhooks</span>
+          <span class="pill pill-blue">Continuidad crítica</span>
         </div>
       </div>
     </div>
 
     <div class="stack-points">
       <div class="stack-point arch-reveal" style="--arch-delay: 0.26s;">
-        <div class="sp-icon sp-icon-purple">🧠</div>
+        <div class="sp-icon sp-icon-purple">📴</div>
         <div>
-          <h4>El agente decide, el número ejecuta</h4>
-          <p>goauth.ai coordina el flujo de verificacion y entrega la capacidad operativa para ejecutar pasos criticos con autonomia real.</p>
+          <h4>Control fuera de internet</h4>
+          <p>Cuando no puedes depender de apps, paneles o conexión de datos, goauth sigue operativo a través de SMS autorizados.</p>
         </div>
       </div>
       <div class="stack-point arch-reveal" style="--arch-delay: 0.32s;">
-        <div class="sp-icon sp-icon-blue">📡</div>
+        <div class="sp-icon sp-icon-blue">🛡️</div>
         <div>
-          <h4>Sin intervención humana, 24/7</h4>
-          <p>El agente recibe eventos, validaciones y mensajes en tiempo real, interpreta el contexto y completa la verificacion de forma autonoma.</p>
+          <h4>Seguridad y trazabilidad</h4>
+          <p>Cada instrucción tiene origen validado, momento de ejecución y acción registrada para operar con más control y menos ambigüedad.</p>
         </div>
       </div>
       <div class="stack-point arch-reveal" style="--arch-delay: 0.38s;">
         <div class="sp-icon sp-icon-purple">⚡</div>
         <div>
-          <h4>Escala sin límite</h4>
-          <p>Un agente puede operar múltiples números en paralelo. Desde un MVP hasta cientos de flujos simultáneos, sin cuellos de botella.</p>
+          <h4>Respuesta inmediata en escenarios críticos</h4>
+          <p>Desde aprobaciones financieras hasta protocolos de emergencia, goauth permite actuar rápido cuando el tiempo y la continuidad importan.</p>
         </div>
       </div>
     </div>
@@ -1375,7 +1384,7 @@
         <li>Mantiene trazabilidad de origen, tiempo y acción ejecutada</li>
         <li>Diseñado para incidentes, fallback y operación continua</li>
       </ul>
-      <div class="usecase-tags">
+      <div class="usecase-tags no-wrap">
         <span class="usecase-tag">Continuidad operacional</span>
         <span class="usecase-tag">Respuesta inmediata</span>
       </div>
@@ -1405,7 +1414,6 @@
           </div>
           <div class="af-content">
             <strong>Se asigna un número real al agente</strong>
-            <span>El agente opera con una SIM física, no con VoIP ni números virtuales.</span>
           </div>
         </li>
         <li class="af-step step">
@@ -1415,8 +1423,7 @@
             <div class="af-arrow"></div>
           </div>
           <div class="af-content">
-            <strong>Recibe el SMS de verificación</strong>
-            <span>La plataforma envía el OTP o código y el agente lo recibe en tiempo real.</span>
+            <strong>La plataforma envía el SMS de verificación</strong>
           </div>
         </li>
         <li class="af-step step">
@@ -1426,8 +1433,7 @@
             <div class="af-arrow"></div>
           </div>
           <div class="af-content">
-            <strong>Extrae y entiende el mensaje</strong>
-            <span>Identifica el código o dato clave y lo prepara para el siguiente paso.</span>
+            <strong>El agente extrae el código y entiende el mensaje</strong>
           </div>
         </li>
         <li class="af-step step">
@@ -1437,8 +1443,7 @@
             <div class="af-arrow"></div>
           </div>
           <div class="af-content">
-            <strong>Lo entrega a tu flujo</strong>
-            <span>Envía el dato a n8n, Make, API o a una persona a traves de Whatsaap o Telegram, según tu operación.</span>
+            <strong>Entrega la instrucción a tu flujo o a una persona</strong>
           </div>
         </li>
         <li class="af-step step">
@@ -1448,8 +1453,7 @@
             <div class="af-arrow"></div>
           </div>
           <div class="af-content">
-            <strong>La automatización continúa</strong>
-            <span>El proceso sigue sin bloqueos ni intervención manual.</span>
+            <strong>La operación continúa sin intervención manual</strong>
           </div>
         </li>
       </ol>
@@ -1457,35 +1461,48 @@
 
   </div>
 
-  <!-- SMS Command highlight strip -->
-  <div class="sms-command-wrap arch-reveal" style="--arch-delay: 0.1s;">
+</section>
+
+<section id="control-sms" style="background: var(--dark); border-bottom: 1px solid var(--border);">
+  <div class="center offline-header arch-reveal" style="--arch-delay: 0s;">
+    <span class="section-tag">Operación offline</span>
+    <h2 class="section-title">Controla tu agente incluso sin internet</h2>
+    <p class="section-sub">goauth permite enviar instrucciones por SMS desde números autorizados, para ejecutar acciones críticas incluso cuando no tienes apps, WiFi ni conexión de datos.</p>
+  </div>
+  <div class="sms-command-wrap arch-reveal" style="--arch-delay: 0.08s;">
     <div class="sms-command-strip">
       <div class="sms-cmd-left">
-        <div class="sms-cmd-badge">Sin internet</div>
-        <h4>Controla tu agente por SMS desde cualquier lugar</h4>
-        <p>Envía instrucciones a tu agente por SMS desde un número previamente validado. No necesitas apps, WiFi ni datos móviles. El agente recibe la orden, la procesa y actúa, con una capa extra de seguridad: solo responde a mensajes autorizados y la instrucción viaja por SMS, sin dejar exposición operativa en internet. Útil en zonas sin cobertura de datos, emergencias o situaciones donde la velocidad es crítica.</p>
+        <h4>Una capa de control que sigue operativa cuando otros canales fallan</h4>
+        <p>Tu agente puede recibir órdenes por SMS solo desde números previamente validados. Así operas con una capa extra de seguridad, sin depender de paneles, apps o internet para ejecutar acciones sensibles.</p>
+        <ul class="offline-list">
+          <li>Solo responde a números autorizados</li>
+          <li>No depende de apps, WiFi ni datos móviles</li>
+          <li>Útil en emergencias, zonas remotas y fallas de infraestructura</li>
+          <li>Mantiene control operativo cuando otros canales no están disponibles</li>
+        </ul>
       </div>
     </div>
     <div class="sms-cmd-right">
-      <div class="sms-bubble sms-out">
-        <span class="sms-meta">Tú → Agente</span>
-        APROBAR transferencia 12,000 USD cuenta BCP
-      </div>
-      <div class="sms-bubble sms-in">
-        <span class="sms-meta">Agente → Tú</span>
-        ✓ Transferencia validada y ejecutada. ID: #TXN-8821. 14:32 UTC
-      </div>
-      <div class="sms-bubble sms-out">
-        <span class="sms-meta">Tú → Agente</span>
-        BLOQUEAR acceso cuenta AWS hasta nuevo aviso
-      </div>
-      <div class="sms-bubble sms-in">
-        <span class="sms-meta">Agente → Tú</span>
-        ✓ Acceso bloqueado. Alerta enviada al equipo de seguridad.
+      <div class="offline-demo-card">
+        <div class="sms-bubble sms-out">
+          <span class="sms-meta">Tú → Agente</span>
+          APROBAR transferencia 12,000 USD cuenta BCP
+        </div>
+        <div class="sms-bubble sms-in">
+          <span class="sms-meta">Agente → Tú</span>
+          ✓ Orden recibida · Acción ejecutada
+        </div>
+        <div class="sms-bubble sms-out">
+          <span class="sms-meta">Tú → Agente</span>
+          ACTIVAR protocolo de contingencia datacenter norte
+        </div>
+        <div class="sms-bubble sms-in">
+          <span class="sms-meta">Agente → Tú</span>
+          ✓ Protocolo activado. Alertas enviadas y operación derivada.
+        </div>
       </div>
     </div>
   </div>
-
 </section>
 
 <!-- PRECIOS -->
@@ -1744,6 +1761,18 @@
     const priceRevealItems = document.querySelectorAll('.price-reveal');
     const smsCommandStrip = document.querySelector('.sms-command-wrap');
     const smsBubbles = smsCommandStrip ? smsCommandStrip.querySelectorAll('.sms-bubble') : [];
+    let smsAnimationPlayed = false;
+
+    const triggerSmsAnimation = () => {
+      if (smsAnimationPlayed) return;
+      smsAnimationPlayed = true;
+      const delays = [60, 380, 760, 1100];
+      smsBubbles.forEach((bubble, index) => {
+        window.setTimeout(() => {
+          bubble.classList.add('is-visible');
+        }, delays[index] ?? index * 320);
+      });
+    };
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1816,39 +1845,33 @@
         usecaseItems.forEach((item) => revealObserver.observe(item));
         priceRevealItems.forEach((item) => revealObserver.observe(item));
 
-        if (smsCommandStrip) {
-          const smsObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const delays = [60, 380, 760, 1100];
-                smsBubbles.forEach((bubble, index) => {
-                  window.setTimeout(() => {
-                    bubble.classList.add('is-visible');
-                  }, delays[index] ?? index * 320);
-                });
-                smsObserver.unobserve(entry.target);
-              }
-            });
-          }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -12% 0px'
-          });
-
-          smsObserver.observe(smsCommandStrip);
-        }
       } else {
         architectureItems.forEach((item) => item.classList.add('is-visible'));
         usecaseItems.forEach((item) => item.classList.add('is-visible'));
         priceRevealItems.forEach((item) => item.classList.add('is-visible'));
-        smsBubbles.forEach((bubble) => bubble.classList.add('is-visible'));
+      }
+
+      if (smsCommandStrip) {
+        const smsObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              triggerSmsAnimation();
+              smsObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: window.innerWidth <= 768 ? 0.12 : 0.22,
+          rootMargin: window.innerWidth <= 768 ? '0px 0px -12% 0px' : '0px 0px -10% 0px'
+        });
+
+        smsObserver.observe(smsCommandStrip);
       }
     } else {
       steps.forEach((step) => step.classList.add('is-visible'));
       architectureItems.forEach((item) => item.classList.add('is-visible'));
       usecaseItems.forEach((item) => item.classList.add('is-visible'));
       priceRevealItems.forEach((item) => item.classList.add('is-visible'));
-      smsBubbles.forEach((bubble) => bubble.classList.add('is-visible'));
-      if (smsCommandStrip) smsCommandStrip.classList.add('is-active');
+      triggerSmsAnimation();
     }
   })();
 </script>
