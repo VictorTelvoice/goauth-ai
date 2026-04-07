@@ -630,7 +630,7 @@
       margin-top: 3.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 2.65rem;
       align-items: start;
     }
     .sms-command-strip {
@@ -655,14 +655,21 @@
       display: flex;
       flex-direction: column;
       gap: 0.65rem;
-      padding-top: 1rem;
+      padding-top: 1.35rem;
     }
     .sms-bubble {
+      --bubble-tilt: 0deg;
       padding: 0.7rem 1rem; border-radius: 12px;
       font-size: 0.82rem; line-height: 1.5; max-width: 88%;
       opacity: 0;
-      transform: translateY(14px);
+      transform: translateY(14px) rotate(var(--bubble-tilt));
       filter: blur(6px);
+      transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+    }
+    .sms-bubble.is-visible {
+      opacity: 1;
+      transform: translateY(0) rotate(var(--bubble-tilt));
+      filter: blur(0);
     }
     .sms-meta {
       display: block; font-size: 0.68rem; font-weight: 700;
@@ -670,39 +677,23 @@
       opacity: 0.55; margin-bottom: 0.3rem;
     }
     .sms-out {
+      --bubble-tilt: -1.25deg;
       background: rgba(108,59,255,0.18); border: 1px solid rgba(108,59,255,0.25);
       color: var(--text); align-self: flex-end; margin-left: auto;
       border-bottom-right-radius: 4px;
     }
     .sms-in {
+      --bubble-tilt: 1.1deg;
       background: rgba(0,229,192,0.1); border: 1px solid rgba(0,229,192,0.2);
       color: var(--text); align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    .sms-cmd-right .sms-bubble:nth-child(1) { animation-delay: 0.05s; }
-    .sms-cmd-right .sms-bubble:nth-child(2) { animation-delay: 0.42s; }
-    .sms-cmd-right .sms-bubble:nth-child(3) { animation-delay: 0.86s; }
-    .sms-cmd-right .sms-bubble:nth-child(4) { animation-delay: 1.24s; }
-    .sms-command-wrap.is-active .sms-bubble {
-      animation: smsArrival 0.7s ease-out forwards;
-    }
-
-    @keyframes smsArrival {
-      0% {
-        opacity: 0;
-        transform: translateY(14px);
-        filter: blur(6px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 2px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 12px));
     }
 
     @media (max-width: 900px) {
       .agent-powers-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-      .sms-command-wrap { grid-template-columns: 1fr; gap: 1rem; }
+      .sms-command-wrap { grid-template-columns: 1fr; gap: 2rem; }
       .sms-command-strip { padding: 2rem 1.4rem; }
       .sms-cmd-right {
         width: 100%;
@@ -712,8 +703,8 @@
       .sms-bubble {
         max-width: 100%;
       }
-      .sms-out { margin-left: auto; margin-right: 0; transform: rotate(-1deg); }
-      .sms-in { margin-left: 0; margin-right: auto; transform: rotate(1deg); }
+      .sms-out { --bubble-tilt: -1.45deg; margin-left: auto; margin-right: 0; }
+      .sms-in { --bubble-tilt: 1.2deg; margin-left: 0; margin-right: auto; }
       .agent-flow {
         grid-template-columns: 1fr;
         gap: 1.65rem;
@@ -1612,11 +1603,21 @@
 
 <script>
   (() => {
+    const resetToHero = () => {
+      if (location.hash) {
+        history.replaceState(null, '', `${location.pathname}${location.search}`);
+      }
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
-    window.scrollTo(0, 0);
-    window.addEventListener('pageshow', () => window.scrollTo(0, 0));
+    resetToHero();
+    window.addEventListener('load', resetToHero);
+    window.addEventListener('pageshow', resetToHero);
 
     const toggleButtons = document.querySelectorAll('[data-billing]');
     const priceCards = document.querySelectorAll('.price-card');
@@ -1625,6 +1626,7 @@
     const usecaseItems = document.querySelectorAll('.usecase-reveal');
     const priceRevealItems = document.querySelectorAll('.price-reveal');
     const smsCommandStrip = document.querySelector('.sms-command-wrap');
+    const smsBubbles = smsCommandStrip ? smsCommandStrip.querySelectorAll('.sms-bubble') : [];
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1701,13 +1703,18 @@
           const smsObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('is-active');
+                const delays = [60, 380, 760, 1100];
+                smsBubbles.forEach((bubble, index) => {
+                  window.setTimeout(() => {
+                    bubble.classList.add('is-visible');
+                  }, delays[index] ?? index * 320);
+                });
                 smsObserver.unobserve(entry.target);
               }
             });
           }, {
-            threshold: 0.22,
-            rootMargin: '0px 0px -4% 0px'
+            threshold: 0.12,
+            rootMargin: '0px 0px -12% 0px'
           });
 
           smsObserver.observe(smsCommandStrip);
@@ -1716,13 +1723,14 @@
         architectureItems.forEach((item) => item.classList.add('is-visible'));
         usecaseItems.forEach((item) => item.classList.add('is-visible'));
         priceRevealItems.forEach((item) => item.classList.add('is-visible'));
-        if (smsCommandStrip) smsCommandStrip.classList.add('is-active');
+        smsBubbles.forEach((bubble) => bubble.classList.add('is-visible'));
       }
     } else {
       steps.forEach((step) => step.classList.add('is-visible'));
       architectureItems.forEach((item) => item.classList.add('is-visible'));
       usecaseItems.forEach((item) => item.classList.add('is-visible'));
       priceRevealItems.forEach((item) => item.classList.add('is-visible'));
+      smsBubbles.forEach((bubble) => bubble.classList.add('is-visible'));
       if (smsCommandStrip) smsCommandStrip.classList.add('is-active');
     }
   })();
