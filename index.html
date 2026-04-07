@@ -994,7 +994,7 @@
     }
     .price-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 20px; padding: 1.85rem 1.6rem;
+      border-radius: 20px; padding: 1.65rem 1.4rem;
       position: relative; overflow: hidden;
       transition: transform 0.3s, border-color 0.3s;
     }
@@ -1009,30 +1009,45 @@
       font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem;
       border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;
     }
+    .custom-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 0.8rem;
+      border-radius: 999px;
+      background: rgba(0,229,192,0.1);
+      border: 1px solid rgba(0,229,192,0.24);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.95rem;
+      text-transform: uppercase;
+    }
     .plan-name { font-size: 0.82rem; font-weight: 700; color: var(--text); text-transform: none; letter-spacing: 0; margin-bottom: 0.9rem; }
     .price-original { font-size: 1rem; color: var(--muted); text-decoration: line-through; margin-bottom: 0.3rem; }
     .price-main { display: flex; align-items: baseline; gap: 0.25rem; margin-bottom: 0.5rem; }
-    .price-amount { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; }
+    .price-amount { font-size: 2.7rem; font-weight: 900; letter-spacing: -0.03em; }
     .price-mo { font-size: 1rem; color: var(--muted); }
     .billing-caption {
       color: var(--muted);
-      font-size: 0.78rem;
-      margin-bottom: 1rem;
+      font-size: 0.76rem;
+      margin-bottom: 0.9rem;
     }
     .promo-badge {
       display: inline-block;
       background: rgba(0,229,192,0.15); border: 1px solid rgba(0,229,192,0.3);
       color: var(--accent); font-size: 0.72rem; font-weight: 700;
-      padding: 0.18rem 0.6rem; border-radius: 100px; margin-bottom: 1.2rem;
+      padding: 0.16rem 0.58rem; border-radius: 100px; margin-bottom: 1rem;
     }
-    .price-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.68rem; margin-bottom: 1.55rem; }
-    .feature-list li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.88rem; }
+    .price-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.58rem; margin-bottom: 1.3rem; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.84rem; }
     .feature-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
     .price-btn {
       display: block; width: 100%; text-align: center;
-      padding: 0.78rem; border-radius: 10px; font-weight: 700;
-      font-size: 0.92rem; text-decoration: none; transition: all 0.2s;
+      padding: 0.72rem; border-radius: 10px; font-weight: 700;
+      font-size: 0.88rem; text-decoration: none; transition: all 0.2s;
     }
     .price-btn-outline {
       background: transparent; border: 1px solid var(--brand-light); color: var(--brand-light);
@@ -1639,6 +1654,7 @@
 
     <!-- POWER -->
     <div class="price-card price-reveal" style="--reveal-delay: 0.16s;" data-monthly-price="$990" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="Implementación personalizada" data-monthly-caption="Entrenamos tu agente y te guiamos en todo el proceso." data-annual-price="$990" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="Diseñado según tu operación" data-annual-caption="Entrenamos tu agente y te guiamos en todo el proceso.">
+      <div class="custom-badge">Implementación personalizada</div>
       <div class="plan-name">Power</div>
       <div class="price-original">$990 / mes</div>
       <div class="price-main">
@@ -1646,12 +1662,11 @@
         <span class="price-mo">/ mes</span>
       </div>
       <div class="billing-caption">Entrenamos tu agente y te guiamos en todo el proceso.</div>
-      <div class="promo-badge">Implementación personalizada</div>
       <hr class="price-divider" />
       <ul class="feature-list">
         <li>Entrenamiento personalizado del agente</li>
         <li>Acompañamiento experto en la implementación</li>
-        <li>Hasta 5 numeros SIM</li>
+        <li>Hasta 3 numeros SIM</li>
         <li>Soporte 24/7</li>
       </ul>
       <a href="#" class="price-btn price-btn-outline">Hablar con un especialista</a>
