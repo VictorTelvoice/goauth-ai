@@ -58,6 +58,7 @@
       padding: 0.5rem 1.25rem; border-radius: 8px;
       font-weight: 600 !important; font-size: 0.85rem !important;
       transition: background 0.2s !important;
+      text-decoration: none !important;
     }
     .nav-cta:hover { background: var(--brand-light) !important; }
     .mobile-nav-cta { display: none; }
@@ -82,7 +83,7 @@
       position: relative;
       overflow: hidden;
       background: rgba(108,59,255,0.15); border: 1px solid rgba(108,59,255,0.4);
-      color: var(--brand-light); font-size: 0.77rem; font-weight: 700;
+      color: var(--brand-light); font-size: 0.69rem; font-weight: 700;
       padding: 0.34rem 0.95rem; border-radius: 100px; margin-bottom: 1.5rem;
       letter-spacing: 0.05em; text-transform: uppercase;
       box-shadow: 0 0 0 1px rgba(139,92,246,0.08), 0 8px 30px rgba(76,29,149,0.14);
@@ -176,14 +177,14 @@
       justify-content: center;
       gap: 0.6rem;
       color: var(--muted);
-      font-size: 0.6rem;
+      font-size: 0.675rem;
       font-weight: 600;
       white-space: nowrap;
       text-align: center;
     }
     .application-pill-icon {
       color: var(--accent);
-      font-size: 0.72rem;
+      font-size: 0.76rem;
     }
     .testimonials-section {
       background: var(--dark);
@@ -260,6 +261,12 @@
     .stack-wrap {
       display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
       align-items: center; max-width: 1100px; margin: 4rem auto 0;
+    }
+    .arch-reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
     }
     .stack-diagram {
       display: flex; flex-direction: column; gap: 0; position: relative;
@@ -378,26 +385,27 @@
     .infra-feat::before { content: '✓'; color: #60A5FA; font-weight: 700; }
     .infra-form {
       width: min(100%, 340px);
-      background: rgba(8, 14, 34, 0.46);
-      border: 1px solid rgba(96,165,250,0.2);
+      background: linear-gradient(180deg, rgba(9, 15, 33, 0.78), rgba(13, 19, 40, 0.56));
+      border: 1px solid rgba(96,165,250,0.18);
       border-radius: 18px;
-      padding: 1.1rem;
+      padding: 1rem;
       box-shadow: 0 18px 48px rgba(6, 10, 26, 0.25);
+      backdrop-filter: blur(12px);
     }
     .infra-form h4 {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 800;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.28rem;
     }
     .infra-form p {
       color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.55;
-      margin-bottom: 0.9rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin-bottom: 0.82rem;
     }
     .infra-form-grid {
       display: grid;
-      gap: 0.72rem;
+      gap: 0.65rem;
     }
     .infra-input,
     .infra-textarea {
@@ -423,7 +431,7 @@
       background: rgba(255,255,255,0.045);
     }
     .infra-textarea {
-      min-height: 96px;
+      min-height: 74px;
       resize: vertical;
     }
     .infra-submit {
@@ -646,7 +654,7 @@
         margin-bottom: 2rem;
       }
       .badge {
-        font-size: 0.68rem;
+        font-size: 0.61rem;
         padding: 0.28rem 0.86rem;
         margin-bottom: 1.05rem;
         letter-spacing: 0.065em;
@@ -667,8 +675,18 @@
         max-width: 100%;
       }
       .application-pill {
-        font-size: 0.58rem;
+        font-size: 0.645rem;
         white-space: normal;
+      }
+      .arch-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        filter: blur(8px);
+      }
+      .arch-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
       }
       .testimonials-track {
         animation-duration: 46s;
@@ -745,14 +763,14 @@
 
 <!-- STACK: GOAUTH -->
 <section id="stack" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="center">
+  <div class="center arch-reveal" style="--arch-delay: 0s;">
     <span class="section-tag">Arquitectura</span>
     <h2 class="section-title">Inteligencia que opera sobre infraestructura real</h2>
     <p class="section-sub">Tu agente no solo piensa también actúa con números reales, OTPs y ejecución confiable en el mundo real.</p>
   </div>
-  <div class="stack-wrap">
+  <div class="stack-wrap arch-reveal" style="--arch-delay: 0.08s;">
     <div class="stack-diagram">
-      <div class="stack-layer layer-goauth">
+      <div class="stack-layer layer-goauth arch-reveal" style="--arch-delay: 0.14s;">
         <div class="layer-label lbl-goauth">Capa de Agente</div>
         <div class="layer-name">goauth.ai</div>
         <div class="layer-desc">Agentes entrenados con IA que razonan, conversan y toman decisiones de verificación de forma autónoma.</div>
@@ -763,7 +781,7 @@
           <span class="pill pill-purple">Onboarding</span>
         </div>
       </div>
-      <div class="stack-layer layer-infra">
+      <div class="stack-layer layer-infra arch-reveal" style="--arch-delay: 0.2s;">
         <div class="layer-label lbl-infra">Capa de Comunicacion</div>
         <div class="layer-name">goauth.ai Runtime</div>
         <div class="layer-desc">Canales reales de comunicacion, eventos y automatizacion operativa para ejecutar verificaciones y procesos sensibles.</div>
@@ -777,21 +795,21 @@
     </div>
 
     <div class="stack-points">
-      <div class="stack-point">
+      <div class="stack-point arch-reveal" style="--arch-delay: 0.26s;">
         <div class="sp-icon sp-icon-purple">🧠</div>
         <div>
           <h4>El agente decide, el número ejecuta</h4>
           <p>goauth.ai coordina el flujo de verificacion y entrega la capacidad operativa para ejecutar pasos criticos con autonomia real.</p>
         </div>
       </div>
-      <div class="stack-point">
+      <div class="stack-point arch-reveal" style="--arch-delay: 0.32s;">
         <div class="sp-icon sp-icon-blue">📡</div>
         <div>
           <h4>Sin intervención humana, 24/7</h4>
           <p>El agente recibe eventos, validaciones y mensajes en tiempo real, interpreta el contexto y completa la verificacion de forma autonoma.</p>
         </div>
       </div>
-      <div class="stack-point">
+      <div class="stack-point arch-reveal" style="--arch-delay: 0.38s;">
         <div class="sp-icon sp-icon-purple">⚡</div>
         <div>
           <h4>Escala sin límite</h4>
@@ -888,14 +906,13 @@
       </div>
     </div>
     <form class="infra-form" action="mailto:support@goauth.io" method="post" enctype="text/plain">
-      <h4>Solicita una demo</h4>
-      <p>Déjanos tus datos y te contactamos para mostrarte cómo se adapta goauth.ai a tu flujo.</p>
+      <h4>Contáctanos</h4>
+      <p>Si tienes un requerimiento especial o un proceso exclusivo de tu empresa, podemos ayudarte.</p>
       <div class="infra-form-grid">
         <input class="infra-input" type="text" name="nombre" placeholder="Nombre" required />
         <input class="infra-input" type="email" name="email" placeholder="Correo corporativo" required />
-        <input class="infra-input" type="text" name="empresa" placeholder="Empresa" />
-        <textarea class="infra-textarea" name="mensaje" placeholder="Cuéntanos qué proceso quieres automatizar"></textarea>
-        <button class="infra-submit" type="submit">Agendar Demo</button>
+        <textarea class="infra-textarea" name="mensaje" placeholder="Cuéntanos brevemente tu necesidad"></textarea>
+        <button class="infra-submit" type="submit">Contactar</button>
       </div>
       <div class="infra-form-note">O escríbenos directo a support@goauth.io</div>
     </form>
@@ -1108,6 +1125,7 @@
     const toggleButtons = document.querySelectorAll('[data-billing]');
     const priceCards = document.querySelectorAll('.price-card');
     const steps = document.querySelectorAll('.step');
+    const architectureItems = document.querySelectorAll('.arch-reveal');
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1149,8 +1167,27 @@
       });
 
       steps.forEach((step) => stepObserver.observe(step));
+
+      if (window.innerWidth <= 768) {
+        const architectureObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              architectureObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.18,
+          rootMargin: '0px 0px -6% 0px'
+        });
+
+        architectureItems.forEach((item) => architectureObserver.observe(item));
+      } else {
+        architectureItems.forEach((item) => item.classList.add('is-visible'));
+      }
     } else {
       steps.forEach((step) => step.classList.add('is-visible'));
+      architectureItems.forEach((item) => item.classList.add('is-visible'));
     }
   })();
 </script>
