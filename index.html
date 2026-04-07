@@ -280,6 +280,45 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem; margin-top: 3.5rem; max-width: 1000px; margin-left: auto; margin-right: auto;
     }
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      margin-top: 1.5rem;
+    }
+    .billing-toggle button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .billing-toggle button.active {
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(108,59,255,0.25);
+    }
+    .billing-save {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 0.55rem;
+      padding: 0.32rem 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(0,229,192,0.1);
+      border: 1px solid rgba(0,229,192,0.25);
+    }
     .price-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 20px; padding: 1.85rem 1.6rem;
@@ -302,6 +341,11 @@
     .price-main { display: flex; align-items: baseline; gap: 0.25rem; margin-bottom: 0.5rem; }
     .price-amount { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; }
     .price-mo { font-size: 1rem; color: var(--muted); }
+    .billing-caption {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+    }
     .promo-badge {
       display: inline-block;
       background: rgba(0,229,192,0.15); border: 1px solid rgba(0,229,192,0.3);
@@ -407,6 +451,10 @@
         scroll-snap-type: x mandatory;
         padding: 0 1rem 0.5rem;
         margin-top: 2.5rem;
+      }
+      .billing-toggle {
+        width: 100%;
+        justify-content: center;
       }
       .price-card {
         scroll-snap-align: start;
@@ -613,17 +661,23 @@
     <span class="section-tag">Precios</span>
     <h2 class="section-title">Planes para cada escala</h2>
     <p class="section-sub">Empieza hoy con <strong>70% de descuento</strong> en tus primeros 3 meses. Cancela cuando quieras.</p>
+    <div class="billing-toggle" aria-label="Selector de facturacion">
+      <button type="button" class="active" data-billing="monthly">Mensual</button>
+      <button type="button" data-billing="annual">Anual</button>
+      <span class="billing-save">Ahorra 20%</span>
+    </div>
   </div>
 
   <div class="pricing-grid">
     <!-- BÁSICO -->
-    <div class="price-card">
+    <div class="price-card" data-monthly-price="$90" data-monthly-original="$299 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$239" data-annual-original="$299 / mes" data-annual-period="/ mes" data-annual-badge="20% OFF con pago anual" data-annual-caption="Facturado anualmente en $2,868">
       <div class="plan-name">Básico</div>
       <div class="price-original">$299 / mes</div>
       <div class="price-main">
         <span class="price-amount">$90</span>
         <span class="price-mo">/ mes</span>
       </div>
+      <div class="billing-caption"></div>
       <div class="promo-badge">🔥 70% OFF — primeros 3 meses</div>
       <hr class="price-divider" />
       <ul class="feature-list">
@@ -632,13 +686,12 @@
         <li>1 agente verificador con capa real de comunicacion</li>
         <li>Verificación de identidad</li>
         <li>Panel de métricas básico</li>
-        <li>Soporte por email</li>
       </ul>
       <a href="#" class="price-btn price-btn-outline">Empezar con Básico</a>
     </div>
 
     <!-- PRO -->
-    <div class="price-card featured">
+    <div class="price-card featured" data-monthly-price="$180" data-monthly-original="$599 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$479" data-annual-original="$599 / mes" data-annual-period="/ mes" data-annual-badge="20% OFF con pago anual" data-annual-caption="Facturado anualmente en $5,748">
       <div class="featured-badge">Más popular</div>
       <div class="plan-name">Pro</div>
       <div class="price-original">$599 / mes</div>
@@ -646,6 +699,7 @@
         <span class="price-amount">$180</span>
         <span class="price-mo">/ mes</span>
       </div>
+      <div class="billing-caption"></div>
       <div class="promo-badge">🔥 70% OFF — primeros 3 meses</div>
       <hr class="price-divider" />
       <ul class="feature-list">
@@ -654,20 +708,19 @@
         <li>Canales dedicados segun tu flujo operativo</li>
         <li>Verificación + Transferencias + Marketing</li>
         <li>API / Webhook / n8n / Make</li>
-        <li>Panel avanzado con alertas</li>
-        <li>Soporte prioritario por chat</li>
       </ul>
       <a href="#" class="price-btn price-btn-filled">Empezar con Pro</a>
     </div>
 
     <!-- POWER -->
-    <div class="price-card">
+    <div class="price-card" data-monthly-price="$297" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$792" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="20% OFF con pago anual" data-annual-caption="Facturado anualmente en $9,504">
       <div class="plan-name">Power</div>
       <div class="price-original">$990 / mes</div>
       <div class="price-main">
         <span class="price-amount">$297</span>
         <span class="price-mo">/ mes</span>
       </div>
+      <div class="billing-caption"></div>
       <div class="promo-badge">🔥 70% OFF — primeros 3 meses</div>
       <hr class="price-divider" />
       <ul class="feature-list">
@@ -676,8 +729,6 @@
         <li>White-label completo</li>
         <li>Infraestructura dedicada para verificacion</li>
         <li>Entrenamiento personalizado avanzado</li>
-        <li>SLA garantizado 99.9%</li>
-        <li>Gerente de cuenta dedicado</li>
       </ul>
       <a href="#" class="price-btn price-btn-outline">Empezar con Power</a>
     </div>
@@ -724,5 +775,37 @@
   </div>
 </footer>
 
+<script>
+  (() => {
+    const toggleButtons = document.querySelectorAll('[data-billing]');
+    const priceCards = document.querySelectorAll('.price-card');
+
+    const applyBilling = (billing) => {
+      toggleButtons.forEach((button) => {
+        button.classList.toggle('active', button.dataset.billing === billing);
+      });
+
+      priceCards.forEach((card) => {
+        const amount = card.querySelector('.price-amount');
+        const original = card.querySelector('.price-original');
+        const period = card.querySelector('.price-mo');
+        const badge = card.querySelector('.promo-badge');
+        const caption = card.querySelector('.billing-caption');
+
+        amount.textContent = card.dataset[`${billing}Price`];
+        original.textContent = card.dataset[`${billing}Original`];
+        period.textContent = card.dataset[`${billing}Period`];
+        badge.textContent = card.dataset[`${billing}Badge`];
+        caption.textContent = card.dataset[`${billing}Caption`] || '';
+      });
+    };
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener('click', () => applyBilling(button.dataset.billing));
+    });
+
+    applyBilling('monthly');
+  })();
+</script>
 </body>
 </html>
