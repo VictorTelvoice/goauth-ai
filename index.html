@@ -332,6 +332,14 @@
       transition: border-color 0.3s, transform 0.3s;
     }
     .usecase-card:hover { border-color: var(--brand-light); transform: translateY(-4px); }
+    .usecase-reveal,
+    .price-reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: opacity 0.78s ease, transform 0.78s ease, filter 0.78s ease;
+      transition-delay: var(--reveal-delay, 0s);
+    }
     .usecase-head {
       display: flex;
       align-items: center;
@@ -484,20 +492,20 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.35rem;
+      padding: 0.24rem;
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.03);
       border-radius: 999px;
-      margin-top: 1.5rem;
+      margin-top: 1.2rem;
     }
     .billing-toggle button {
       border: 0;
       background: transparent;
       color: var(--muted);
       font: inherit;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      padding: 0.55rem 1rem;
+      padding: 0.44rem 0.82rem;
       border-radius: 999px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -510,9 +518,9 @@
     .billing-save {
       display: inline-flex;
       align-items: center;
-      margin-left: 0.55rem;
-      padding: 0.32rem 0.6rem;
-      font-size: 0.72rem;
+      margin-left: 0.3rem;
+      padding: 0.24rem 0.48rem;
+      font-size: 0.64rem;
       font-weight: 700;
       border-radius: 999px;
       color: var(--accent);
@@ -701,6 +709,18 @@
         transform: translateY(0);
         filter: blur(0);
       }
+      .usecase-reveal,
+      .price-reveal {
+        opacity: 0;
+        transform: translateY(22px) scale(0.985);
+        filter: blur(8px);
+      }
+      .usecase-reveal.is-visible,
+      .price-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
       .testimonials-track {
         animation-duration: 46s;
       }
@@ -709,7 +729,20 @@
         min-width: 78vw;
         max-width: 78vw;
       }
-      .infra-banner { flex-direction: column; }
+      .infra-banner {
+        flex-direction: column;
+        padding: 2rem 1.2rem;
+        max-width: none;
+        margin: 0 -0.2rem;
+      }
+      .infra-banner-text,
+      .infra-form {
+        min-width: 100%;
+        width: 100%;
+      }
+      .infra-form {
+        padding: 1rem 0.95rem;
+      }
       .pricing-grid {
         display: grid;
         grid-auto-flow: column;
@@ -720,8 +753,10 @@
         margin-top: 2.5rem;
       }
       .billing-toggle {
-        width: 100%;
+        width: auto;
         justify-content: center;
+        transform: scale(0.94);
+        transform-origin: center top;
       }
       .price-card {
         scroll-snap-align: start;
@@ -841,7 +876,7 @@
     <p class="section-sub">Cada agente de goauth.ai integra comunicación real y entrenamiento orientado a la tarea que necesitas automatizar.</p>
   </div>
   <div class="usecases-grid">
-    <div class="usecase-card">
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0s;">
       <div class="usecase-head">
         <div class="usecase-icon">🆔</div>
         <h3>Verificación de Identidad</h3>
@@ -849,7 +884,7 @@
       <p>Confirma la identidad de usuarios y destraba accesos sensibles sin depender de intervención humana en cada paso.</p>
       <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
     </div>
-    <div class="usecase-card">
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.08s;">
       <div class="usecase-head">
         <div class="usecase-icon">💳</div>
         <h3>Autorización de Transferencias</h3>
@@ -857,7 +892,7 @@
       <p>Valida operaciones críticas en tiempo real y reduce fricción sin perder control sobre decisiones sensibles.</p>
       <span class="usecase-tag">✓ OTP + Webhook instantáneo</span>
     </div>
-    <div class="usecase-card">
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.16s;">
       <div class="usecase-head">
         <div class="usecase-icon">📲</div>
         <h3>Marketing Conversacional</h3>
@@ -865,7 +900,7 @@
       <p>Convierte conversaciones en oportunidades reales con agentes que responden, califican y derivan leads automáticamente.</p>
       <span class="usecase-tag">✓ WhatsApp · Telegram · SMS</span>
     </div>
-    <div class="usecase-card">
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.24s;">
       <div class="usecase-head">
         <div class="usecase-icon">🔔</div>
         <h3>Notificaciones con Confirmación</h3>
@@ -914,8 +949,8 @@
 
 <!-- INFRA HIGHLIGHT -->
 <section id="contacto" style="background: var(--dark);">
-  <div class="infra-banner">
-    <div class="infra-banner-text">
+  <div class="infra-banner usecase-reveal" style="--reveal-delay: 0.04s;">
+    <div class="infra-banner-text arch-reveal" style="--arch-delay: 0.08s;">
       <span class="section-tag">Infraestructura</span>
       <h3>Infraestructura real para agentes verificadores</h3>
       <p>goauth.ai combina canales reales, eventos en tiempo real y automatización para operar procesos de verificación, autenticación y conversión.</p>
@@ -926,7 +961,7 @@
         <div class="infra-feat">Configuración rápida según tu caso de uso</div>
       </div>
     </div>
-    <form class="infra-form" action="mailto:support@goauth.io" method="post" enctype="text/plain">
+    <form class="infra-form arch-reveal" action="mailto:support@goauth.io" method="post" enctype="text/plain" style="--arch-delay: 0.14s;">
       <h4>Contáctanos</h4>
       <p>Si tienes un requerimiento especial o un proceso exclusivo de tu empresa, podemos ayudarte.</p>
       <div class="infra-form-grid">
@@ -945,7 +980,7 @@
     <span class="section-tag">Precios</span>
     <h2 class="section-title">Planes para cada escala</h2>
     <p class="section-sub">Empieza hoy con <strong>70% de descuento</strong> en tus primeros 3 meses. Cancela cuando quieras.</p>
-    <div class="billing-toggle" aria-label="Selector de facturacion">
+    <div class="billing-toggle price-reveal" aria-label="Selector de facturacion">
       <button type="button" class="active" data-billing="monthly">Mensual</button>
       <button type="button" data-billing="annual">Anual</button>
       <span class="billing-save">Ahorra 30%</span>
@@ -954,7 +989,7 @@
 
   <div class="pricing-grid">
     <!-- BÁSICO -->
-    <div class="price-card" data-monthly-price="$90" data-monthly-original="$299 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$209" data-annual-original="$299 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $2,508">
+    <div class="price-card price-reveal" style="--reveal-delay: 0s;" data-monthly-price="$90" data-monthly-original="$299 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$209" data-annual-original="$299 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $2,508">
       <div class="plan-name">Básico</div>
       <div class="price-original">$299 / mes</div>
       <div class="price-main">
@@ -974,7 +1009,7 @@
     </div>
 
     <!-- PRO -->
-    <div class="price-card featured" data-monthly-price="$180" data-monthly-original="$599 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$419" data-annual-original="$599 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $5,028">
+    <div class="price-card price-reveal featured" style="--reveal-delay: 0.08s;" data-monthly-price="$180" data-monthly-original="$599 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$419" data-annual-original="$599 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $5,028">
       <div class="featured-badge">Más popular</div>
       <div class="plan-name">Pro</div>
       <div class="price-original">$599 / mes</div>
@@ -995,7 +1030,7 @@
     </div>
 
     <!-- POWER -->
-    <div class="price-card" data-monthly-price="$297" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$693" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $8,316">
+    <div class="price-card price-reveal" style="--reveal-delay: 0.16s;" data-monthly-price="$297" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$693" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $8,316">
       <div class="plan-name">Power</div>
       <div class="price-original">$990 / mes</div>
       <div class="price-main">
@@ -1149,6 +1184,8 @@
     const priceCards = document.querySelectorAll('.price-card');
     const steps = document.querySelectorAll('.step');
     const architectureItems = document.querySelectorAll('.arch-reveal');
+    const usecaseItems = document.querySelectorAll('.usecase-reveal');
+    const priceRevealItems = document.querySelectorAll('.price-reveal');
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1205,12 +1242,31 @@
         });
 
         architectureItems.forEach((item) => architectureObserver.observe(item));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.16,
+          rootMargin: '0px 0px -8% 0px'
+        });
+
+        usecaseItems.forEach((item) => revealObserver.observe(item));
+        priceRevealItems.forEach((item) => revealObserver.observe(item));
       } else {
         architectureItems.forEach((item) => item.classList.add('is-visible'));
+        usecaseItems.forEach((item) => item.classList.add('is-visible'));
+        priceRevealItems.forEach((item) => item.classList.add('is-visible'));
       }
     } else {
       steps.forEach((step) => step.classList.add('is-visible'));
       architectureItems.forEach((item) => item.classList.add('is-visible'));
+      usecaseItems.forEach((item) => item.classList.add('is-visible'));
+      priceRevealItems.forEach((item) => item.classList.add('is-visible'));
     }
   })();
 </script>
