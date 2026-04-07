@@ -390,26 +390,39 @@
     .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
 
-    /* ── SCENARIO BOX ── */
-    .scenario-box {
-      display: flex; align-items: flex-start; gap: 1.5rem;
-      background: linear-gradient(135deg, rgba(108,59,255,0.08), rgba(0,229,192,0.04));
-      border: 1px solid rgba(108,59,255,0.25);
-      border-radius: 16px; padding: 2rem 2.25rem;
-      max-width: 820px; margin: 3rem auto 0;
+    /* ── CAPABILITY GRID ── */
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3.5rem;
     }
-    .scenario-icon {
-      font-size: 2.2rem; flex-shrink: 0;
-      width: 56px; height: 56px;
-      background: rgba(108,59,255,0.12); border-radius: 12px;
+    .cap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .cap-card:hover { border-color: var(--brand-light); transform: translateY(-3px); }
+    .cap-icon {
+      font-size: 1.8rem; margin-bottom: 1rem;
+      width: 48px; height: 48px;
+      background: rgba(108,59,255,0.12); border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
     }
-    .scenario-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+    .cap-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.55rem; }
+    .cap-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.75; }
+
+    /* ── FLOW DIVIDER ── */
+    .flow-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 3.5rem 0 3rem;
+      color: var(--muted); font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
     }
-    .scenario-text p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; }
-    .scenario-text strong { color: var(--text); }
+    .flow-divider::before, .flow-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
 
     /* ── INFRA BANNER ── */
     .infra-banner {
@@ -938,44 +951,74 @@
 <section id="como-funciona" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="center">
     <span class="section-tag">Cómo funciona</span>
-    <h2 class="section-title">El guardián que nunca<br>duerme, nunca falla</h2>
-    <p class="section-sub">En toda empresa hay una persona de alto rango que tiene en su poder el número o chip con acceso a los sistemas críticos. goauth.ai se convierte en ese guardián — disponible 24/7, sin vacaciones, sin errores humanos.</p>
+    <h2 class="section-title">Un número real.<br>Posibilidades ilimitadas.</h2>
+    <p class="section-sub">El número de teléfono es el pasaporte del mundo digital. Toda plataforma, banco, red social o marketplace lo exige para verificar que eres humano y real. goauth.ai te da un agente que opera con ese pasaporte — autónomamente, a cualquier escala.</p>
   </div>
 
-  <!-- Scenario callout -->
-  <div class="scenario-box arch-reveal" style="--arch-delay: 0s;">
-    <div class="scenario-icon">🏦</div>
-    <div class="scenario-text">
-      <div class="scenario-label">El escenario real</div>
-      <p>Un director financiero o responsable de tesorería tiene asignado el número de empresa vinculado a las cuentas bancarias, exchanges o plataformas críticas. Cuando llega una solicitud de transferencia o acceso, <strong>solo esa persona puede recibir el OTP y validar</strong> que la operación es legítima. Es el último eslabón de seguridad — y es humano.</p>
+  <!-- Capability grid -->
+  <div class="capability-grid">
+    <div class="cap-card arch-reveal" style="--arch-delay: 0s;">
+      <div class="cap-icon">🧑‍💻</div>
+      <h4>Crear cuentas como humano</h4>
+      <p>El agente puede registrarse en cualquier plataforma que exija verificación SMS — exchanges, marketplaces, redes sociales, SaaS, bancos digitales — y validar la cuenta de forma completamente autónoma.</p>
+    </div>
+    <div class="cap-card arch-reveal" style="--arch-delay: 0.07s;">
+      <div class="cap-icon">🔐</div>
+      <h4>Validar cualquier 2FA / OTP</h4>
+      <p>WhatsApp Business, Google, Meta, Binance, Stripe, plataformas bancarias. Si la verificación llega por SMS, el agente la recibe, la interpreta y la completa sin intervención humana.</p>
+    </div>
+    <div class="cap-card arch-reveal" style="--arch-delay: 0.14s;">
+      <div class="cap-icon">🏦</div>
+      <h4>Autorizar transacciones críticas</h4>
+      <p>El agente reemplaza al director financiero o responsable de tesorería que tiene el chip de la empresa. Valida que cada transferencia sea legítima antes de ejecutar el OTP — o la bloquea y alerta al instante.</p>
+    </div>
+    <div class="cap-card arch-reveal" style="--arch-delay: 0.21s;">
+      <div class="cap-icon">📣</div>
+      <h4>Marketing con número verificado</h4>
+      <p>Lanza campañas de WhatsApp, SMS o Telegram desde un número real de empresa. El agente responde, califica leads y agenda demos — sin que nadie lo detecte como bot o lo bloquee.</p>
+    </div>
+    <div class="cap-card arch-reveal" style="--arch-delay: 0.28s;">
+      <div class="cap-icon">🚀</div>
+      <h4>Onboarding autónomo de usuarios</h4>
+      <p>Guía a nuevos usuarios paso a paso: solicita datos, valida OTPs en su nombre, activa cuentas y confirma registros — todo en un flujo sin fricción y sin intervención de tu equipo.</p>
+    </div>
+    <div class="cap-card arch-reveal" style="--arch-delay: 0.35s;">
+      <div class="cap-icon">🛡️</div>
+      <h4>Detección y respuesta a fraudes</h4>
+      <p>El agente monitorea intentos de acceso sospechosos y responde en tiempo real: bloquea, solicita verificación adicional o escala la alerta — protegiendo cuentas sin que nadie esté pendiente.</p>
     </div>
   </div>
 
-  <div class="how-grid" style="margin-top: 3rem;">
+  <!-- How it flows -->
+  <div class="flow-divider">
+    <span>¿Cómo opera el agente?</span>
+  </div>
+
+  <div class="how-grid">
     <div class="step" style="--step-delay: 0s;">
       <div class="step-num">1</div>
-      <h3>El agente toma el rol</h3>
-      <p>goauth.ai asigna un agente inteligente que asume la responsabilidad del guardián. Recibe un número real de empresa — SIM física, no VoIP — vinculado a tus cuentas y sistemas críticos.</p>
+      <h3>Número real asignado</h3>
+      <p>Tu agente recibe una SIM física real de telsim.io — no VoIP, no virtual — vinculada a tus cuentas, plataformas o flujos de negocio.</p>
     </div>
     <div class="step" style="--step-delay: 0.08s;">
       <div class="step-num">2</div>
-      <h3>Llega la solicitud</h3>
-      <p>Un banco, exchange o plataforma envía un OTP o solicitud de autorización al número de la empresa. El agente lo recibe al instante vía webhook en tiempo real — sin demoras, sin intermediarios.</p>
+      <h3>Recibe la verificación</h3>
+      <p>Cualquier plataforma envía un SMS, OTP o solicitud de autorización al número. El agente lo recibe al instante vía webhook — en milisegundos.</p>
     </div>
     <div class="step" style="--step-delay: 0.16s;">
       <div class="step-num">3</div>
-      <h3>El agente analiza y decide</h3>
-      <p>Antes de actuar, el agente valida el contexto: ¿la operación fue iniciada por un flujo legítimo? ¿Coincide con las reglas de negocio configuradas? ¿Es el monto, origen y horario esperado?</p>
+      <h3>Analiza el contexto</h3>
+      <p>Antes de actuar, el agente evalúa: ¿es un flujo legítimo? ¿Coincide con las reglas configuradas? ¿Es el origen, monto y horario esperado?</p>
     </div>
     <div class="step" style="--step-delay: 0.24s;">
       <div class="step-num">4</div>
-      <h3>Autoriza o bloquea</h3>
-      <p>Si todo coincide, el agente completa la verificación de forma autónoma. Si detecta algo fuera de parámetro, bloquea y escala la alerta al responsable humano en segundos.</p>
+      <h3>Ejecuta o escala</h3>
+      <p>Si todo es válido, completa la acción de forma autónoma. Si detecta algo anómalo, bloquea y notifica al responsable en segundos.</p>
     </div>
     <div class="step" style="--step-delay: 0.32s;">
       <div class="step-num">5</div>
-      <h3>Tú solo supervisas</h3>
-      <p>Cada operación queda registrada con trazabilidad completa. El dinero de tu empresa siempre tiene un guardián activo — sin depender de que una persona esté disponible.</p>
+      <h3>Registro completo</h3>
+      <p>Cada operación queda documentada con trazabilidad total. Tú supervisas, el agente ejecuta — sin depender de que alguien esté disponible.</p>
     </div>
   </div>
 </section>
