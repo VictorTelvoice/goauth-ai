@@ -1,76 +1,13 @@
-# Telsim
+# goauth-ai
 
-Infraestructura de SIM física para bots y automatizaciones.
+Landing page para `goauth.ai`, enfocada en agentes verificadores con IA para autenticación, validación de identidad, transferencias, marketing y automatización operativa.
 
-## ¿Qué es Telsim?
+## Qué incluye hoy
 
-Telsim provee números SIM reales (no VoIP) para bots, automatizaciones y desarrolladores que necesitan recibir SMS y autenticarse en servicios que bloquean números virtuales.
+- Landing comercial de `goauth.ai`
+- Import del HTML inicial generado en Claude en `claude-import/goauth-landing.html`
+- Base del proyecto heredada desde `Telsim`, lista para evolucionar al nuevo producto
 
-## Stack
+## Siguiente objetivo
 
-- **Frontend**: React + TypeScript + Tailwind CSS
-- **Backend**: Supabase (PostgreSQL + Edge Functions)
-- **Pagos**: Stripe
-- **Email**: Resend
-- **Deploy**: Vercel + Cloudflare
-
-## Servicios
-
-- Números SIM físicos reales
-- Recepción de SMS en tiempo real
-- API REST + Webhooks
-- Notificaciones por Telegram
-- Dashboard de gestión
-- Planes: Starter, Pro, Power
-
-## Desarrollo local
-
-```bash
-npm install
-npm run dev
-```
-
-La app corre con Vite en `http://localhost:3000`.
-
-## Variables de entorno
-
-Usa `.env.local` para desarrollo. La app ahora requiere explícitamente:
-
-```bash
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-```
-
-Para endpoints serverless y webhooks también necesitas, según el flujo que vayas a probar:
-
-```bash
-SUPABASE_SERVICE_ROLE_KEY=
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
-VITE_STRIPE_PUBLISHABLE_KEY=
-RESEND_API_KEY=
-TELEGRAM_BOT_TOKEN=
-TELEGRAM_CHAT_ID=
-TELEGRAM_ADMIN_TOKEN=
-TELEGRAM_ADMIN_CHAT_ID=
-```
-
-Revisa [`.env.example`](/Users/victor/Documents/GitHub/telsim/telsim2.0/.env.example) como plantilla base.
-
-## Validación
-
-```bash
-npm run lint
-npm run build
-```
-
-## Estructura útil
-
-- `screens/`: vistas de onboarding, dashboard y admin
-- `api/`: funciones serverless para checkout, gestión y webhooks
-- `supabase/functions/`: Edge Functions
-- `lib/` y `contexts/`: clientes, helpers y estado compartido
-
-## Contacto
-
-info@telsim.io · https://telsim.io
+Transformar esta base en la nueva web de `goauth.ai`, con branding propio, pricing actualizado y enfoque en agentes verificadores.
