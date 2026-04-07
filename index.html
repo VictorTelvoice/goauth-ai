@@ -242,6 +242,68 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem; margin-top: 3.5rem;
     }
+    .process-visual {
+      position: relative;
+      max-width: 980px;
+      margin: 3rem auto 0;
+      padding: 2rem 1.5rem 0;
+    }
+    .process-line {
+      position: absolute;
+      top: 38px;
+      left: 9%;
+      right: 9%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(108,59,255,0.12), rgba(0,229,192,0.55), rgba(108,59,255,0.12));
+      overflow: hidden;
+    }
+    .process-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 120px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+      animation: processBeam 3.8s linear infinite;
+    }
+    .process-nodes {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .process-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      text-align: center;
+    }
+    .process-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #8B5CF6 55%, #4C1D95 100%);
+      box-shadow: 0 0 0 8px rgba(108,59,255,0.08), 0 0 24px rgba(108,59,255,0.45);
+      animation: processPulse 2.4s ease-in-out infinite;
+    }
+    .process-node:nth-child(2) .process-dot { animation-delay: 0.2s; }
+    .process-node:nth-child(3) .process-dot { animation-delay: 0.4s; }
+    .process-node:nth-child(4) .process-dot { animation-delay: 0.6s; }
+    .process-node:nth-child(5) .process-dot { animation-delay: 0.8s; }
+    .process-node strong {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .process-node span {
+      color: var(--muted);
+      font-size: 0.83rem;
+      line-height: 1.55;
+      max-width: 150px;
+    }
     .step { text-align: center; padding: 1.5rem; }
     .step-num {
       width: 48px; height: 48px;
@@ -298,6 +360,18 @@
       border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;
     }
     .plan-name { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .plan-audience {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .plan-summary {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
     .price-original { font-size: 1rem; color: var(--muted); text-decoration: line-through; margin-bottom: 0.3rem; }
     .price-main { display: flex; align-items: baseline; gap: 0.25rem; margin-bottom: 0.5rem; }
     .price-amount { font-size: 3.5rem; font-weight: 900; letter-spacing: -0.03em; }
@@ -328,6 +402,15 @@
     }
     .price-btn-filled:hover { box-shadow: 0 0 40px rgba(108,59,255,0.55); }
     .pricing-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem; }
+
+    @keyframes processBeam {
+      from { transform: translateX(-140px); }
+      to { transform: translateX(calc(100vw - 120px)); }
+    }
+    @keyframes processPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 8px rgba(108,59,255,0.08), 0 0 24px rgba(108,59,255,0.35); }
+      50% { transform: scale(1.12); box-shadow: 0 0 0 10px rgba(0,229,192,0.14), 0 0 34px rgba(0,229,192,0.4); }
+    }
 
     /* ── CTA FINAL ── */
     .cta-section {
@@ -361,6 +444,13 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .stack-wrap { grid-template-columns: 1fr; }
+      .process-nodes {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .process-line {
+        left: 14%;
+        right: 14%;
+      }
     }
     @media (max-width: 768px) {
       nav ul { display: none; }
@@ -396,6 +486,41 @@
       }
       .trust-items { gap: 1.5rem; }
       .infra-banner { flex-direction: column; }
+      .process-visual {
+        padding: 1.5rem 0 0;
+      }
+      .process-line {
+        display: none;
+      }
+      .process-nodes {
+        display: grid;
+        grid-template-columns: repeat(5, 78%);
+        gap: 0.9rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0 1rem 0.5rem;
+      }
+      .process-node {
+        scroll-snap-align: start;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1rem;
+        min-height: 168px;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 88%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0 1rem 0.5rem;
+        margin-top: 2.5rem;
+      }
+      .price-card {
+        scroll-snap-align: start;
+        min-height: 100%;
+      }
     }
   </style>
 </head>
@@ -418,7 +543,7 @@
   <div class="badge">Agentes de Verificación con IA</div>
   <h1>El agente que <span class="highlight">verifica, autentica<br>y convierte</span> por ti</h1>
   <p class="hero-sub">
-    Entrena agentes inteligentes que verifican identidades, autorizan transferencias y activan campañas de marketing, con números de teléfono reales.
+    Automatiza verificaciones, autorizaciones y confirmaciones con agentes que operan con números reales.
   </p>
   <div class="hero-btns">
     <a href="#precios" class="btn-primary">Ver planes con 70% OFF →</a>
@@ -510,25 +635,25 @@
     <div class="usecase-card">
       <div class="usecase-icon">🆔</div>
       <h3>Verificación de Identidad</h3>
-      <p>El agente solicita, valida y confirma la identidad del usuario vía SMS o llamada en segundos. Sin formularios, sin fricción.</p>
+      <p>Confirma la identidad de usuarios y destraba accesos sensibles sin depender de intervención humana en cada paso.</p>
       <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
     </div>
     <div class="usecase-card">
       <div class="usecase-icon">💳</div>
       <h3>Autorización de Transferencias</h3>
-      <p>Agrega una capa de seguridad humana a tus flujos financieros. El agente confirma cada transacción con el titular en tiempo real.</p>
+      <p>Valida operaciones críticas en tiempo real y reduce fricción sin perder control sobre decisiones sensibles.</p>
       <span class="usecase-tag">✓ OTP + Webhook instantáneo</span>
     </div>
     <div class="usecase-card">
       <div class="usecase-icon">📲</div>
       <h3>Marketing Conversacional</h3>
-      <p>Lanza campañas que hablan con tus clientes como personas. El agente califica leads, responde preguntas y agenda demos.</p>
+      <p>Convierte conversaciones en oportunidades reales con agentes que responden, califican y derivan leads automáticamente.</p>
       <span class="usecase-tag">✓ WhatsApp · Telegram · SMS</span>
     </div>
     <div class="usecase-card">
       <div class="usecase-icon">🔔</div>
       <h3>Notificaciones con Confirmación</h3>
-      <p>Envia alertas de seguridad, recordatorios o actualizaciones de estado, y el agente espera la confirmacion del usuario.</p>
+      <p>Envía alertas, espera confirmación y registra respuesta para cerrar el circuito sin perseguir al usuario manualmente.</p>
       <span class="usecase-tag">✓ 24/7 sin intervencion</span>
     </div>
   </div>
@@ -540,6 +665,36 @@
     <span class="section-tag">Proceso</span>
     <h2 class="section-title">De cero a agente activo<br>en minutos</h2>
     <p class="section-sub">Sin código. Sin integraciones complejas. Solo configura, entrena y lanza.</p>
+  </div>
+  <div class="process-visual">
+    <div class="process-line"></div>
+    <div class="process-nodes">
+      <div class="process-node">
+        <div class="process-dot"></div>
+        <strong>Plan</strong>
+        <span>Definimos el caso de uso y el nivel de autonomia que necesita tu operacion.</span>
+      </div>
+      <div class="process-node">
+        <div class="process-dot"></div>
+        <strong>Entrenamiento</strong>
+        <span>Ajustamos prompts, reglas, respuestas y criterios de validacion para tu flujo.</span>
+      </div>
+      <div class="process-node">
+        <div class="process-dot"></div>
+        <strong>Canales</strong>
+        <span>Conectamos numero real, mensajeria, eventos y salidas para operar en el mundo real.</span>
+      </div>
+      <div class="process-node">
+        <div class="process-dot"></div>
+        <strong>Activacion</strong>
+        <span>Lanzamos el agente con supervision inicial y pruebas sobre escenarios reales.</span>
+      </div>
+      <div class="process-node">
+        <div class="process-dot"></div>
+        <strong>Escala</strong>
+        <span>Multiplicas agentes y casos de uso sin rehacer la arquitectura desde cero.</span>
+      </div>
+    </div>
   </div>
   <div class="how-grid">
     <div class="step">
@@ -603,6 +758,8 @@
     <!-- BÁSICO -->
     <div class="price-card">
       <div class="plan-name">Básico</div>
+      <div class="plan-audience">Para una operación principal</div>
+      <p class="plan-summary">Ideal para validar un flujo clave y salir rápido a producción con un agente funcional.</p>
       <div class="price-original">$299 / mes</div>
       <div class="price-main">
         <span class="price-amount">$90</span>
@@ -625,6 +782,8 @@
     <div class="price-card featured">
       <div class="featured-badge">Más popular</div>
       <div class="plan-name">Pro</div>
+      <div class="plan-audience">Para equipos con varios flujos</div>
+      <p class="plan-summary">Pensado para operaciones que necesitan más cobertura, más validaciones y más autonomía.</p>
       <div class="price-original">$599 / mes</div>
       <div class="price-main">
         <span class="price-amount">$180</span>
@@ -647,6 +806,8 @@
     <!-- POWER -->
     <div class="price-card">
       <div class="plan-name">Power</div>
+      <div class="plan-audience">Para operaciones críticas o alto volumen</div>
+      <p class="plan-summary">La opción para escalar agentes verificadores en procesos sensibles con mayor personalización.</p>
       <div class="price-original">$990 / mes</div>
       <div class="price-main">
         <span class="price-amount">$297</span>
