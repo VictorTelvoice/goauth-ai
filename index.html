@@ -132,19 +132,83 @@
       display: inline-block;
     }
 
-    /* ── TRUST BAR ── */
-    .trust-bar {
+    /* ── APPLICATIONS BAND ── */
+    .applications-band {
       background: var(--dark2);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 1.5rem 5%; text-align: center;
-      color: var(--muted); font-size: 0.85rem;
+      padding: 1.6rem 0 1.8rem;
+      overflow: hidden;
     }
-    .trust-bar strong { color: var(--text); }
-    .trust-items {
-      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 0.75rem;
+    .applications-header {
+      text-align: center;
+      padding: 0 5%;
+      margin-bottom: 1rem;
     }
-    .trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
-    .trust-icon { color: var(--accent); font-size: 1.1rem; }
+    .applications-header strong {
+      color: var(--text);
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .applications-marquee {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .applications-track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      padding: 0 1rem;
+      animation: applicationsScroll 42s linear infinite;
+    }
+    .application-card {
+      width: 280px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem 1rem 1.05rem;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    }
+    .application-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.7rem;
+    }
+    .application-company {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .application-lang {
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .application-copy {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .application-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #93C5FD;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(96,165,250,0.25);
+      background: rgba(96,165,250,0.08);
+    }
 
     /* ── SECTIONS ── */
     section { padding: 6rem 5%; }
@@ -373,6 +437,11 @@
     .price-btn-filled:hover { box-shadow: 0 0 40px rgba(108,59,255,0.55); }
     .pricing-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem; }
 
+    @keyframes applicationsScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 0.5rem)); }
+    }
+
     /* ── CTA FINAL ── */
     .cta-section {
       text-align: center;
@@ -441,7 +510,22 @@
       .hero-btns a {
         width: 100%;
       }
-      .trust-items { gap: 1.5rem; }
+      .applications-band {
+        padding: 1.35rem 0 1.55rem;
+      }
+      .applications-header {
+        margin-bottom: 0.8rem;
+      }
+      .applications-marquee {
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
+      .applications-track {
+        animation-duration: 52s;
+      }
+      .application-card {
+        width: 248px;
+      }
       .infra-banner { flex-direction: column; }
       .pricing-grid {
         display: grid;
@@ -494,15 +578,177 @@
   </div>
 </section>
 
-<!-- TRUST BAR -->
-  <div class="trust-bar">
-    <strong>Casos de uso comprobados</strong>
-  <div class="trust-items">
-    <div class="trust-item"><span class="trust-icon">🔐</span> Verificación de identidad</div>
-    <div class="trust-item"><span class="trust-icon">💸</span> Autorización de transferencias</div>
-    <div class="trust-item"><span class="trust-icon">📣</span> Marketing conversacional</div>
+<!-- APPLICATIONS BAND -->
+<section class="applications-band" aria-label="Aplicaciones">
+  <div class="applications-header">
+    <strong>Aplicaciones</strong>
   </div>
-</div>
+  <div class="applications-marquee">
+    <div class="applications-track">
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">La Ruta del Chucao</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Verifica reservas y confirma identidad antes de activar experiencias premium y salidas guiadas.</p>
+        <span class="application-tag">Verificación de identidad</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Sendas del Volcán</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Envía recordatorios y espera confirmación del usuario antes de cerrar cupos, pagos o cambios logísticos.</p>
+        <span class="application-tag">Notificaciones con confirmación</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">NorthBridge Lending</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Confirms transfer approvals in real time before sensitive disbursements are released to customers.</p>
+        <span class="application-tag">Transfer authorization</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Atlas Recovery Group</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Qualifies inbound leads, validates contact intent and routes high-value conversations to sales instantly.</p>
+        <span class="application-tag">Conversational marketing</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Clínica Horizonte</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Confirma citas y validaciones previas para reducir ausencias y ordenar la agenda clínica.</p>
+        <span class="application-tag">Confirmación operativa</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">VerdeVale Seguros</div>
+          <div class="application-lang">PT</div>
+        </div>
+        <p class="application-copy">Valida identidade e confirma ações críticas antes de aprovar alterações em apólices e sinistros.</p>
+        <span class="application-tag">Validação de identidade</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Porto Nova Pay</div>
+          <div class="application-lang">PT</div>
+        </div>
+        <p class="application-copy">Autoriza transferências de maior risco e registra resposta do usuário sem depender de backoffice manual.</p>
+        <span class="application-tag">Autorização financeira</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Cumbre Legal</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Asegura confirmación documental y seguimiento de clientes en procesos donde cada paso debe quedar trazado.</p>
+        <span class="application-tag">Seguimiento y confirmación</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Blue Cedar Health</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Handles outbound reminders and captures patient confirmations before appointments and service windows.</p>
+        <span class="application-tag">Confirmed notifications</span>
+      </article>
+      <article class="application-card">
+        <div class="application-meta">
+          <div class="application-company">Aurora Growth Studio</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Screens prospects across WhatsApp, Telegram and SMS, then forwards qualified conversations to the right team.</p>
+        <span class="application-tag">Lead qualification</span>
+      </article>
+
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">La Ruta del Chucao</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Verifica reservas y confirma identidad antes de activar experiencias premium y salidas guiadas.</p>
+        <span class="application-tag">Verificación de identidad</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Sendas del Volcán</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Envía recordatorios y espera confirmación del usuario antes de cerrar cupos, pagos o cambios logísticos.</p>
+        <span class="application-tag">Notificaciones con confirmación</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">NorthBridge Lending</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Confirms transfer approvals in real time before sensitive disbursements are released to customers.</p>
+        <span class="application-tag">Transfer authorization</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Atlas Recovery Group</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Qualifies inbound leads, validates contact intent and routes high-value conversations to sales instantly.</p>
+        <span class="application-tag">Conversational marketing</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Clínica Horizonte</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Confirma citas y validaciones previas para reducir ausencias y ordenar la agenda clínica.</p>
+        <span class="application-tag">Confirmación operativa</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">VerdeVale Seguros</div>
+          <div class="application-lang">PT</div>
+        </div>
+        <p class="application-copy">Valida identidade e confirma ações críticas antes de aprovar alterações em apólices e sinistros.</p>
+        <span class="application-tag">Validação de identidade</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Porto Nova Pay</div>
+          <div class="application-lang">PT</div>
+        </div>
+        <p class="application-copy">Autoriza transferências de maior risco e registra resposta do usuário sem depender de backoffice manual.</p>
+        <span class="application-tag">Autorização financeira</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Cumbre Legal</div>
+          <div class="application-lang">ES</div>
+        </div>
+        <p class="application-copy">Asegura confirmación documental y seguimiento de clientes en procesos donde cada paso debe quedar trazado.</p>
+        <span class="application-tag">Seguimiento y confirmación</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Blue Cedar Health</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Handles outbound reminders and captures patient confirmations before appointments and service windows.</p>
+        <span class="application-tag">Confirmed notifications</span>
+      </article>
+      <article class="application-card" aria-hidden="true">
+        <div class="application-meta">
+          <div class="application-company">Aurora Growth Studio</div>
+          <div class="application-lang">EN</div>
+        </div>
+        <p class="application-copy">Screens prospects across WhatsApp, Telegram and SMS, then forwards qualified conversations to the right team.</p>
+        <span class="application-tag">Lead qualification</span>
+      </article>
+    </div>
+  </div>
+</section>
 
 <!-- STACK: GOAUTH -->
 <section id="stack" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
