@@ -323,13 +323,19 @@
 
     /* ── USE CASES ── */
     .usecases-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; margin-top: 3.5rem;
+    }
+    /* last card (7th) centered on its own row */
+    .usecases-grid .usecase-card:last-child {
+      grid-column: 2 / 3;
     }
     .usecase-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 2rem;
+      border-radius: 16px; padding: 1.75rem;
       transition: border-color 0.3s, transform 0.3s;
+      display: flex; flex-direction: column;
     }
     .usecase-card:hover { border-color: var(--brand-light); transform: translateY(-4px); }
     .usecase-reveal,
@@ -341,24 +347,28 @@
       transition-delay: var(--reveal-delay, 0s);
     }
     .usecase-head {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.9rem;
     }
     .usecase-icon {
-      width: 50px; height: 50px; background: rgba(108,59,255,0.15);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
+      width: 46px; height: 46px; background: rgba(108,59,255,0.15);
+      border-radius: 11px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; flex-shrink: 0;
     }
-    .usecase-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0; }
-    .usecase-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+    .usecase-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0; line-height: 1.3; }
+    .usecase-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.75; flex: 1; }
+    .usecase-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
     .usecase-tag {
-      display: inline-block; margin-top: 1rem;
-      font-size: 0.72rem; font-weight: 600; color: #60A5FA;
-      background: rgba(29,78,216,0.12); border: 1px solid rgba(29,78,216,0.25);
-      padding: 0.18rem 0.55rem; border-radius: 100px;
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 600; color: #60A5FA;
+      background: rgba(29,78,216,0.1); border: 1px solid rgba(29,78,216,0.22);
+      padding: 0.15rem 0.55rem; border-radius: 100px;
+    }
+    @media (max-width: 960px) {
+      .usecases-grid { grid-template-columns: repeat(2, 1fr); }
+      .usecases-grid .usecase-card:last-child { grid-column: auto; }
+    }
+    @media (max-width: 600px) {
+      .usecases-grid { grid-template-columns: 1fr; }
     }
 
     /* ── HOW IT WORKS ── */
@@ -979,42 +989,95 @@
 <section id="casos">
   <div class="center">
     <span class="section-tag">Casos de uso</span>
-    <h2 class="section-title">IA lista para actuar en el mundo real</h2>
-    <p class="section-sub">Cada agente integra comunicación real orientado a la tarea que necesitas automatizar.</p>
+    <h2 class="section-title">Todo lo que tu agente<br>puede hacer por ti</h2>
+    <p class="section-sub">Un agente con número real opera como una persona con teléfono de empresa — pero sin horarios, sin errores y a cualquier escala.</p>
   </div>
   <div class="usecases-grid">
+
     <div class="usecase-card usecase-reveal" style="--reveal-delay: 0s;">
       <div class="usecase-head">
-        <div class="usecase-icon">🆔</div>
-        <h3>Verificación de Identidad</h3>
+        <div class="usecase-icon">🔐</div>
+        <h3>Verificación de identidad y 2FA</h3>
       </div>
-      <p>Confirma la identidad de usuarios y destraba accesos sensibles sin depender de intervención humana en cada paso.</p>
-      <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
+      <p>El agente recibe cualquier OTP o código 2FA por SMS — de bancos, exchanges, Google, Meta, Stripe o cualquier plataforma — y completa la verificación solo, en segundos.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ OTP automático</span>
+        <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
+      </div>
     </div>
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.08s;">
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.07s;">
       <div class="usecase-head">
-        <div class="usecase-icon">💳</div>
-        <h3>Autorización de Transferencias</h3>
+        <div class="usecase-icon">🧑‍💻</div>
+        <h3>Creación de cuentas como humano</h3>
       </div>
-      <p>Valida operaciones críticas en tiempo real y reduce fricción sin perder control sobre decisiones sensibles.</p>
-      <span class="usecase-tag">✓ OTP + Webhook instantáneo</span>
+      <p>El agente se registra en cualquier plataforma que exija verificación por número real — marketplaces, redes sociales, SaaS, exchanges — y activa la cuenta de forma completamente autónoma.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ Número verificado</span>
+        <span class="usecase-tag">✓ Sin intervención humana</span>
+      </div>
     </div>
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.16s;">
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.14s;">
       <div class="usecase-head">
-        <div class="usecase-icon">📲</div>
-        <h3>Marketing Conversacional</h3>
+        <div class="usecase-icon">🏦</div>
+        <h3>Autorización de transacciones críticas</h3>
       </div>
-      <p>Convierte conversaciones en oportunidades reales con agentes que responden, califican y derivan leads automáticamente.</p>
-      <span class="usecase-tag">✓ WhatsApp · Telegram · SMS</span>
+      <p>Reemplaza al responsable de tesorería que tiene el chip de empresa. El agente valida que cada transferencia sea legítima antes de ejecutar el OTP, o la bloquea y alerta al instante si algo no cuadra.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ Webhook en tiempo real</span>
+        <span class="usecase-tag">✓ Bloqueo automático</span>
+      </div>
     </div>
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.24s;">
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.21s;">
       <div class="usecase-head">
-        <div class="usecase-icon">🔔</div>
-        <h3>Notificaciones con Confirmación</h3>
+        <div class="usecase-icon">📣</div>
+        <h3>Marketing conversacional</h3>
       </div>
-      <p>Envía alertas, espera confirmación y registra respuesta para cerrar el circuito sin perseguir al usuario manualmente.</p>
-      <span class="usecase-tag">✓ 24/7 sin intervencion</span>
+      <p>Lanza campañas de WhatsApp, SMS o Telegram desde un número real de empresa. El agente responde, califica leads y agenda demos — sin que ningún filtro lo detecte como bot ni lo bloquee.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ WhatsApp · Telegram · SMS</span>
+        <span class="usecase-tag">✓ Número verificado</span>
+      </div>
     </div>
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.28s;">
+      <div class="usecase-head">
+        <div class="usecase-icon">🚀</div>
+        <h3>Onboarding autónomo de usuarios</h3>
+      </div>
+      <p>Guía a nuevos usuarios paso a paso: solicita sus datos, valida OTPs en su nombre, activa cuentas y confirma el registro — sin que nadie de tu equipo intervenga en ningún punto del flujo.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ n8n · Make · API</span>
+        <span class="usecase-tag">✓ 24/7 sin fricción</span>
+      </div>
+    </div>
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.35s;">
+      <div class="usecase-head">
+        <div class="usecase-icon">🛡️</div>
+        <h3>Detección y respuesta a fraudes</h3>
+      </div>
+      <p>El agente monitorea intentos de acceso sospechosos en tiempo real. Si detecta un patrón anómalo, bloquea, solicita verificación adicional y escala la alerta — antes de que el daño ocurra.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ Anti-spoofing</span>
+        <span class="usecase-tag">✓ Alerta instantánea</span>
+      </div>
+    </div>
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.42s;">
+      <div class="usecase-head">
+        <div class="usecase-icon">📦</div>
+        <h3>Confirmaciones operativas</h3>
+      </div>
+      <p>Envía alertas de pedidos, entregas o citas y espera la confirmación del usuario por SMS. El agente cierra el ciclo, registra la respuesta y actualiza tu sistema — sin seguimiento manual.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ Logística · Servicios</span>
+        <span class="usecase-tag">✓ Webhook de respuesta</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
