@@ -79,12 +79,25 @@
     }
     .badge {
       display: inline-flex; align-items: center; gap: 0.4rem;
+      position: relative;
+      overflow: hidden;
       background: rgba(108,59,255,0.15); border: 1px solid rgba(108,59,255,0.4);
-      color: var(--brand-light); font-size: 0.8rem; font-weight: 600;
-      padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+      color: var(--brand-light); font-size: 0.77rem; font-weight: 700;
+      padding: 0.34rem 0.95rem; border-radius: 100px; margin-bottom: 1.5rem;
       letter-spacing: 0.05em; text-transform: uppercase;
+      box-shadow: 0 0 0 1px rgba(139,92,246,0.08), 0 8px 30px rgba(76,29,149,0.14);
+      animation: badgeGlow 4.8s ease-in-out infinite;
     }
     .badge::before { content: '✦'; font-size: 0.6rem; }
+    .badge::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.18) 45%, transparent 70%);
+      transform: translateX(-160%);
+      animation: badgeSheen 5.8s ease-in-out infinite;
+      pointer-events: none;
+    }
     h1 {
       font-size: clamp(2.8rem, 6vw, 5rem);
       font-weight: 900; letter-spacing: -0.04em;
@@ -457,6 +470,31 @@
       to { transform: translateX(calc(-50% - 0.5rem)); }
     }
 
+    @keyframes badgeGlow {
+      0%, 100% {
+        border-color: rgba(108,59,255,0.34);
+        box-shadow: 0 0 0 1px rgba(139,92,246,0.08), 0 8px 30px rgba(76,29,149,0.12);
+      }
+      50% {
+        border-color: rgba(139,92,246,0.56);
+        box-shadow: 0 0 0 1px rgba(139,92,246,0.14), 0 10px 36px rgba(76,29,149,0.2);
+      }
+    }
+
+    @keyframes badgeSheen {
+      0%, 70%, 100% {
+        transform: translateX(-160%);
+        opacity: 0;
+      }
+      12%, 32% {
+        opacity: 1;
+      }
+      40% {
+        transform: translateX(170%);
+        opacity: 0;
+      }
+    }
+
     /* ── CTA FINAL ── */
     .cta-section {
       text-align: center;
@@ -506,10 +544,11 @@
         padding: 7.5rem 1.25rem 4rem;
       }
       h1 {
-        font-size: clamp(2.8rem, 10.4vw, 3.6rem);
-        line-height: 1.02;
+        font-size: clamp(3.08rem, 11vw, 3.92rem);
+        line-height: 0.98;
         margin-bottom: 1rem;
-        max-width: 9.5ch;
+        max-width: 9.7ch;
+        letter-spacing: -0.052em;
         margin-left: auto;
         margin-right: auto;
       }
@@ -520,7 +559,10 @@
         margin-bottom: 2rem;
       }
       .badge {
-        margin-bottom: 1rem;
+        font-size: 0.68rem;
+        padding: 0.28rem 0.86rem;
+        margin-bottom: 1.05rem;
+        letter-spacing: 0.065em;
       }
       .hero-btns a {
         width: 100%;
