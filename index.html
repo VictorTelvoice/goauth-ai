@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoAuth.ai — Agentes Verificadores con IA</title>
+  <title>GoAuth.ai — Control operativo fuera de internet</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -306,6 +306,7 @@
     .stack-layer {
       border-radius: 14px; padding: 1.5rem 1.75rem;
       border: 1px solid var(--border); position: relative;
+      overflow: hidden;
     }
     .stack-layer.layer-goauth {
       background: linear-gradient(135deg, rgba(108,59,255,0.18), rgba(108,59,255,0.06));
@@ -1150,23 +1151,28 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .stack-wrap { grid-template-columns: 1fr; }
+      .stack-diagram,
+      .stack-points {
+        min-width: 0;
+      }
       .stack-layer {
-        padding: 1.15rem 0.95rem;
+        padding: 1.08rem 0.9rem;
       }
       .layer-name {
-        font-size: 1.08rem;
+        font-size: 1.02rem;
       }
       .layer-desc {
-        font-size: 0.8rem;
-        line-height: 1.55;
+        font-size: 0.78rem;
+        line-height: 1.52;
       }
       .layer-pills {
-        gap: 0.22rem;
-        margin-top: 0.6rem;
+        gap: 0.18rem;
+        margin-top: 0.55rem;
+        min-width: 0;
       }
       .pill {
-        font-size: 0.49rem;
-        padding: 0.1rem 0.34rem;
+        font-size: 0.46rem;
+        padding: 0.1rem 0.3rem;
         letter-spacing: -0.01em;
       }
     }
@@ -1338,7 +1344,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge">Agentes de Verificación con IA</div>
+  <div class="badge">Control operativo fuera de internet</div>
   <h1>Controla <span class="highlight">operaciones críticas</span><br>incluso fuera de internet</h1>
   <p class="hero-sub">
     Opera agentes, automatizaciones y acciones críticas por SMS autorizado, incluso sin apps, paneles o conexión de datos.
@@ -1634,10 +1640,10 @@
       <div class="promo-badge">🔥 70% OFF — primeros 3 meses</div>
       <hr class="price-divider" />
       <ul class="feature-list">
-        <li>1 agente verificador activo</li>
-        <li>Hasta 500 verificaciones / mes</li>
-        <li>Numero SIM Real</li>
-        <li>Soporte Ticket</li>
+        <li>1 agente operativo activo</li>
+        <li>Hasta 500 acciones críticas / mes</li>
+        <li>Número SIM real</li>
+        <li>Soporte por ticket</li>
       </ul>
       <a href="#" class="price-btn price-btn-outline">Empezar con Básico</a>
     </div>
@@ -1655,10 +1661,10 @@
       <div class="promo-badge">🔥 70% OFF — primeros 3 meses</div>
       <hr class="price-divider" />
       <ul class="feature-list">
-        <li>2 agentes verificadores activos</li>
-        <li>Hasta 2,500 verificaciones / mes</li>
-        <li>2 Numeros SIM reales</li>
-        <li>Soporte Prioritario</li>
+        <li>2 agentes operativos activos</li>
+        <li>Hasta 2,500 acciones críticas / mes</li>
+        <li>2 números SIM reales</li>
+        <li>Soporte prioritario</li>
       </ul>
       <a href="#" class="price-btn price-btn-filled">Empezar con Pro</a>
     </div>
@@ -1677,13 +1683,13 @@
       <ul class="feature-list">
         <li>Entrenamiento personalizado del agente</li>
         <li>Acompañamiento experto en la implementación</li>
-        <li>Hasta 3 numeros SIM</li>
+        <li>Hasta 3 números SIM</li>
         <li>Soporte 24/7</li>
       </ul>
       <a href="#" class="price-btn price-btn-outline">Hablar con un especialista</a>
     </div>
   </div>
-  <p class="pricing-note">💳 Sin contrato · Cancela en cualquier momento · Precio en USD · Incluye configuracion inicial del agente verificador</p>
+  <p class="pricing-note">💳 Sin contrato · Precio en USD · Incluye configuración inicial y acompañamiento operativo</p>
 </section>
 
 <!-- INFRA HIGHLIGHT -->
@@ -1691,13 +1697,13 @@
   <div class="infra-banner usecase-reveal" style="--reveal-delay: 0.04s;">
     <div class="infra-banner-text arch-reveal" style="--arch-delay: 0.08s;">
       <span class="section-tag">Infraestructura</span>
-      <h3>Infraestructura real para agentes verificadores</h3>
-      <p>GoAuth.ai combina canales reales, eventos en tiempo real y automatización para operar procesos de verificación, autenticación y conversión.</p>
+      <h3>Control operativo sobre infraestructura real</h3>
+      <p>GoAuth.ai combina SMS autorizado, runtime operativo y automatización para ejecutar acciones críticas incluso cuando otros canales fallan.</p>
       <div class="infra-features">
-        <div class="infra-feat">Canales reales para validación y autenticación</div>
-        <div class="infra-feat">Eventos en tiempo real para OTP y alertas</div>
-        <div class="infra-feat">Integración API con Make, n8n, Whatsaap y Telegram</div>
-        <div class="infra-feat">Configuración rápida según tu caso de uso</div>
+        <div class="infra-feat">SMS autorizado con trazabilidad</div>
+        <div class="infra-feat">Fallback operativo fuera de internet</div>
+        <div class="infra-feat">Integración con API, Make, n8n, WhatsApp y Telegram</div>
+        <div class="infra-feat">Configuración guiada según tu operación</div>
       </div>
     </div>
     <form class="infra-form arch-reveal" action="mailto:support@goauth.ai" method="post" enctype="text/plain" style="--arch-delay: 0.14s;">
@@ -1799,9 +1805,9 @@
 <!-- CTA FINAL -->
 <section class="cta-section">
   <span class="section-tag">¿Listo para empezar?</span>
-  <h2>Despliega tu agente sobre infraestructura real</h2>
-  <p>Activa verificaciones, OTP y flujos de confirmación con GoAuth.ai.</p>
-  <a href="#precios" class="btn-primary">Activar mi agente ahora →</a>
+  <h2>Activa una capa de control que no depende de internet</h2>
+  <p>Opera aprobaciones, agentes y acciones sensibles con GoAuth.ai incluso cuando apps o paneles no están disponibles.</p>
+  <a href="#contacto" class="btn-primary">Hablar con nuestro equipo →</a>
 </section>
 
 <!-- FOOTER -->
@@ -1809,7 +1815,7 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="logo" style="font-size:1.3rem;">Go<span class="logo-auth">Auth</span><span class="logo-dotai">.ai</span></a>
-      <p>Agentes verificadores con IA para procesos reales de autenticacion, identidad y conversion.</p>
+      <p>Control operativo fuera de internet para acciones críticas, agentes y continuidad empresarial.</p>
     </div>
     <div class="footer-link-group">
       <h5>Producto</h5>
@@ -1821,7 +1827,7 @@
     <div class="footer-link-group">
       <h5>Explorar</h5>
       <a href="#casos">Casos de uso</a>
-      <a href="#como-funciona">Como funciona</a>
+      <a href="#como-funciona">Cómo funciona</a>
       <a href="#precios">Precios</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -1834,7 +1840,7 @@
   </div>
   <div class="footer-bottom">
     <p>© 2026 GoAuth.ai by Telvoice — Todos los derechos reservados</p>
-    <p>GoAuth.ai · Agentes verificadores con IA</p>
+    <p>GoAuth.ai · Control operativo por SMS autorizado</p>
   </div>
 </footer>
 
