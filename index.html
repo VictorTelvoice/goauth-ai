@@ -721,6 +721,10 @@
         transform: translateY(0) scale(1);
         filter: blur(0);
       }
+      .price-card.price-reveal {
+        transition-duration: 0.88s;
+        box-shadow: 0 10px 28px rgba(10, 10, 20, 0.18);
+      }
       .testimonials-track {
         animation-duration: 46s;
       }
@@ -977,7 +981,7 @@
   <div class="center">
     <span class="section-tag">Precios</span>
     <h2 class="section-title">Planes para cada escala</h2>
-    <p class="section-sub">Empieza hoy con <strong>70% de descuento</strong> en tus primeros 3 meses. Cancela cuando quieras.</p>
+    <p class="section-sub"><strong>70% de descuento</strong> en tus primeros 3 meses. Cancela cuando quieras.</p>
     <div class="billing-toggle price-reveal" aria-label="Selector de facturacion">
       <button type="button" class="active" data-billing="monthly">Mensual</button>
       <button type="button" data-billing="annual">Anual</button>
