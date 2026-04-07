@@ -654,7 +654,6 @@
       opacity: 0;
       transform: translateY(14px);
       filter: blur(6px);
-      animation: smsArrival 0.7s ease-out forwards;
     }
     .sms-meta {
       display: block; font-size: 0.68rem; font-weight: 700;
@@ -675,6 +674,9 @@
     .sms-cmd-right .sms-bubble:nth-child(2) { animation-delay: 0.42s; }
     .sms-cmd-right .sms-bubble:nth-child(3) { animation-delay: 0.86s; }
     .sms-cmd-right .sms-bubble:nth-child(4) { animation-delay: 1.24s; }
+    .sms-command-strip.is-active .sms-bubble {
+      animation: smsArrival 0.7s ease-out forwards;
+    }
 
     @keyframes smsArrival {
       0% {
@@ -692,6 +694,13 @@
     @media (max-width: 900px) {
       .agent-powers-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
       .sms-command-strip { grid-template-columns: 1fr; }
+      .sms-cmd-right {
+        width: 100%;
+        margin-top: 0.35rem;
+      }
+      .sms-bubble {
+        max-width: 100%;
+      }
       .agent-flow {
         grid-template-columns: 1fr;
         gap: 1.65rem;
@@ -1594,6 +1603,7 @@
     const architectureItems = document.querySelectorAll('.arch-reveal');
     const usecaseItems = document.querySelectorAll('.usecase-reveal');
     const priceRevealItems = document.querySelectorAll('.price-reveal');
+    const smsCommandStrip = document.querySelector('.sms-command-strip');
 
     const applyBilling = (billing) => {
       toggleButtons.forEach((button) => {
@@ -1665,16 +1675,34 @@
 
         usecaseItems.forEach((item) => revealObserver.observe(item));
         priceRevealItems.forEach((item) => revealObserver.observe(item));
+
+        if (smsCommandStrip) {
+          const smsObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-active');
+                smsObserver.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -6% 0px'
+          });
+
+          smsObserver.observe(smsCommandStrip);
+        }
       } else {
         architectureItems.forEach((item) => item.classList.add('is-visible'));
         usecaseItems.forEach((item) => item.classList.add('is-visible'));
         priceRevealItems.forEach((item) => item.classList.add('is-visible'));
+        if (smsCommandStrip) smsCommandStrip.classList.add('is-active');
       }
     } else {
       steps.forEach((step) => step.classList.add('is-visible'));
       architectureItems.forEach((item) => item.classList.add('is-visible'));
       usecaseItems.forEach((item) => item.classList.add('is-visible'));
       priceRevealItems.forEach((item) => item.classList.add('is-visible'));
+      if (smsCommandStrip) smsCommandStrip.classList.add('is-active');
     }
   })();
 </script>
