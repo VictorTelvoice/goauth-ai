@@ -1880,11 +1880,11 @@
         const badge = card.querySelector('.promo-badge');
         const caption = card.querySelector('.billing-caption');
 
-        amount.textContent = card.dataset[`${billing}Price`];
-        original.textContent = card.dataset[`${billing}Original`];
-        period.textContent = card.dataset[`${billing}Period`];
-        badge.textContent = card.dataset[`${billing}Badge`];
-        caption.textContent = card.dataset[`${billing}Caption`] || '';
+        if (amount) amount.textContent = card.dataset[`${billing}Price`] || '';
+        if (original) original.textContent = card.dataset[`${billing}Original`] || '';
+        if (period) period.textContent = card.dataset[`${billing}Period`] || '';
+        if (badge) badge.textContent = card.dataset[`${billing}Badge`] || '';
+        if (caption) caption.textContent = card.dataset[`${billing}Caption`] || '';
       });
     };
 
