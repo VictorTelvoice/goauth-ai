@@ -282,7 +282,7 @@
     }
     .price-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2.5rem 2rem;
+      border-radius: 20px; padding: 1.85rem 1.6rem;
       position: relative; overflow: hidden;
       transition: transform 0.3s, border-color 0.3s;
     }
@@ -297,37 +297,25 @@
       font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem;
       border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;
     }
-    .plan-name { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-    .plan-audience {
-      color: var(--text);
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .plan-summary {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.65;
-      margin-bottom: 1.2rem;
-    }
+    .plan-name { font-size: 0.82rem; font-weight: 700; color: var(--text); text-transform: none; letter-spacing: 0; margin-bottom: 0.9rem; }
     .price-original { font-size: 1rem; color: var(--muted); text-decoration: line-through; margin-bottom: 0.3rem; }
     .price-main { display: flex; align-items: baseline; gap: 0.25rem; margin-bottom: 0.5rem; }
-    .price-amount { font-size: 3.5rem; font-weight: 900; letter-spacing: -0.03em; }
+    .price-amount { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; }
     .price-mo { font-size: 1rem; color: var(--muted); }
     .promo-badge {
       display: inline-block;
       background: rgba(0,229,192,0.15); border: 1px solid rgba(0,229,192,0.3);
-      color: var(--accent); font-size: 0.75rem; font-weight: 700;
-      padding: 0.2rem 0.65rem; border-radius: 100px; margin-bottom: 1.5rem;
+      color: var(--accent); font-size: 0.72rem; font-weight: 700;
+      padding: 0.18rem 0.6rem; border-radius: 100px; margin-bottom: 1.2rem;
     }
-    .price-divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
-    .feature-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; }
+    .price-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.68rem; margin-bottom: 1.55rem; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.88rem; }
     .feature-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
     .price-btn {
       display: block; width: 100%; text-align: center;
-      padding: 0.85rem; border-radius: 10px; font-weight: 700;
-      font-size: 0.95rem; text-decoration: none; transition: all 0.2s;
+      padding: 0.78rem; border-radius: 10px; font-weight: 700;
+      font-size: 0.92rem; text-decoration: none; transition: all 0.2s;
     }
     .price-btn-outline {
       background: transparent; border: 1px solid var(--brand-light); color: var(--brand-light);
@@ -414,7 +402,7 @@
       .pricing-grid {
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 88%;
+        grid-auto-columns: 84%;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         padding: 0 1rem 0.5rem;
@@ -631,8 +619,6 @@
     <!-- BÁSICO -->
     <div class="price-card">
       <div class="plan-name">Básico</div>
-      <div class="plan-audience">Para una operación principal</div>
-      <p class="plan-summary">Ideal para validar un flujo clave y salir rápido a producción con un agente funcional.</p>
       <div class="price-original">$299 / mes</div>
       <div class="price-main">
         <span class="price-amount">$90</span>
@@ -655,8 +641,6 @@
     <div class="price-card featured">
       <div class="featured-badge">Más popular</div>
       <div class="plan-name">Pro</div>
-      <div class="plan-audience">Para equipos con varios flujos</div>
-      <p class="plan-summary">Pensado para operaciones que necesitan más cobertura, más validaciones y más autonomía.</p>
       <div class="price-original">$599 / mes</div>
       <div class="price-main">
         <span class="price-amount">$180</span>
@@ -679,8 +663,6 @@
     <!-- POWER -->
     <div class="price-card">
       <div class="plan-name">Power</div>
-      <div class="plan-audience">Para operaciones críticas o alto volumen</div>
-      <p class="plan-summary">La opción para escalar agentes verificadores en procesos sensibles con mayor personalización.</p>
       <div class="price-original">$990 / mes</div>
       <div class="price-main">
         <span class="price-amount">$297</span>
