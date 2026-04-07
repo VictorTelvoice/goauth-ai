@@ -1010,6 +1010,9 @@
       border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;
     }
     .custom-badge {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
       display: inline-flex;
       align-items: center;
       min-height: 30px;
@@ -1021,7 +1024,6 @@
       font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.05em;
-      margin-bottom: 0.95rem;
       text-transform: uppercase;
     }
     .plan-name { font-size: 0.82rem; font-weight: 700; color: var(--text); text-transform: none; letter-spacing: 0; margin-bottom: 0.9rem; }
@@ -1654,9 +1656,9 @@
 
     <!-- POWER -->
     <div class="price-card price-reveal" style="--reveal-delay: 0.16s;" data-monthly-price="$990" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="Implementación personalizada" data-monthly-caption="Entrenamos tu agente y te guiamos en todo el proceso." data-annual-price="$990" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="Diseñado según tu operación" data-annual-caption="Entrenamos tu agente y te guiamos en todo el proceso.">
-      <div class="custom-badge">Implementación personalizada</div>
+      <div class="custom-badge">Personalizada</div>
       <div class="plan-name">Power</div>
-      <div class="price-original">$990 / mes</div>
+      <div class="price-original" style="display:none;"></div>
       <div class="price-main">
         <span class="price-amount">$990</span>
         <span class="price-mo">/ mes</span>
