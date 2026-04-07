@@ -324,12 +324,8 @@
     /* ── USE CASES ── */
     .usecases-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem; margin-top: 3.5rem;
-    }
-    /* last card (7th) centered on its own row */
-    .usecases-grid .usecase-card:last-child {
-      grid-column: 2 / 3;
     }
     .usecase-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -365,7 +361,6 @@
     }
     @media (max-width: 960px) {
       .usecases-grid { grid-template-columns: repeat(2, 1fr); }
-      .usecases-grid .usecase-card:last-child { grid-column: auto; }
     }
     @media (max-width: 600px) {
       .usecases-grid { grid-template-columns: 1fr; }
@@ -996,85 +991,49 @@
 
     <div class="usecase-card usecase-reveal" style="--reveal-delay: 0s;">
       <div class="usecase-head">
-        <div class="usecase-icon">🔐</div>
-        <h3>Verificación de identidad y 2FA</h3>
-      </div>
-      <p>El agente recibe cualquier OTP o código 2FA por SMS — de bancos, exchanges, Google, Meta, Stripe o cualquier plataforma — y completa la verificación solo, en segundos.</p>
-      <div class="usecase-tags">
-        <span class="usecase-tag">✓ OTP automático</span>
-        <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
-      </div>
-    </div>
-
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.07s;">
-      <div class="usecase-head">
         <div class="usecase-icon">🧑‍💻</div>
-        <h3>Creación de cuentas como humano</h3>
+        <h3>Crear cuentas como humano</h3>
       </div>
-      <p>El agente se registra en cualquier plataforma que exija verificación por número real — marketplaces, redes sociales, SaaS, exchanges — y activa la cuenta de forma completamente autónoma.</p>
+      <p>El agente se registra en cualquier plataforma que exija verificación por número real — exchanges, marketplaces, redes sociales, SaaS, bancos digitales — y activa la cuenta de forma completamente autónoma.</p>
       <div class="usecase-tags">
         <span class="usecase-tag">✓ Número verificado</span>
         <span class="usecase-tag">✓ Sin intervención humana</span>
       </div>
     </div>
 
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.14s;">
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.08s;">
       <div class="usecase-head">
-        <div class="usecase-icon">🏦</div>
-        <h3>Autorización de transacciones críticas</h3>
+        <div class="usecase-icon">🔐</div>
+        <h3>Validar cualquier 2FA / OTP</h3>
       </div>
-      <p>Reemplaza al responsable de tesorería que tiene el chip de empresa. El agente valida que cada transferencia sea legítima antes de ejecutar el OTP, o la bloquea y alerta al instante si algo no cuadra.</p>
+      <p>WhatsApp Business, Google, Meta, Binance, Stripe, plataformas bancarias. Si la verificación llega por SMS, el agente la recibe, extrae el código y lo entrega al proceso que lo necesita — en milisegundos.</p>
       <div class="usecase-tags">
-        <span class="usecase-tag">✓ Webhook en tiempo real</span>
-        <span class="usecase-tag">✓ Bloqueo automático</span>
+        <span class="usecase-tag">✓ OTP automático</span>
+        <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
       </div>
     </div>
 
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.21s;">
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.16s;">
+      <div class="usecase-head">
+        <div class="usecase-icon">🏦</div>
+        <h3>Autorizar transacciones críticas</h3>
+      </div>
+      <p>Reemplaza al responsable que tiene el chip de empresa. El agente recibe el OTP de autorización, lo valida contra el flujo configurado y lo entrega para completar la transacción — o alerta si algo no cuadra.</p>
+      <div class="usecase-tags">
+        <span class="usecase-tag">✓ Webhook en tiempo real</span>
+        <span class="usecase-tag">✓ Trazabilidad completa</span>
+      </div>
+    </div>
+
+    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.24s;">
       <div class="usecase-head">
         <div class="usecase-icon">📣</div>
-        <h3>Marketing conversacional</h3>
+        <h3>Marketing con número verificado</h3>
       </div>
       <p>Lanza campañas de WhatsApp, SMS o Telegram desde un número real de empresa. El agente responde, califica leads y agenda demos — sin que ningún filtro lo detecte como bot ni lo bloquee.</p>
       <div class="usecase-tags">
         <span class="usecase-tag">✓ WhatsApp · Telegram · SMS</span>
         <span class="usecase-tag">✓ Número verificado</span>
-      </div>
-    </div>
-
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.28s;">
-      <div class="usecase-head">
-        <div class="usecase-icon">🚀</div>
-        <h3>Onboarding autónomo de usuarios</h3>
-      </div>
-      <p>Guía a nuevos usuarios paso a paso: solicita sus datos, valida OTPs en su nombre, activa cuentas y confirma el registro — sin que nadie de tu equipo intervenga en ningún punto del flujo.</p>
-      <div class="usecase-tags">
-        <span class="usecase-tag">✓ n8n · Make · API</span>
-        <span class="usecase-tag">✓ 24/7 sin fricción</span>
-      </div>
-    </div>
-
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.35s;">
-      <div class="usecase-head">
-        <div class="usecase-icon">🛡️</div>
-        <h3>Detección y respuesta a fraudes</h3>
-      </div>
-      <p>El agente monitorea intentos de acceso sospechosos en tiempo real. Si detecta un patrón anómalo, bloquea, solicita verificación adicional y escala la alerta — antes de que el daño ocurra.</p>
-      <div class="usecase-tags">
-        <span class="usecase-tag">✓ Anti-spoofing</span>
-        <span class="usecase-tag">✓ Alerta instantánea</span>
-      </div>
-    </div>
-
-    <div class="usecase-card usecase-reveal" style="--reveal-delay: 0.42s;">
-      <div class="usecase-head">
-        <div class="usecase-icon">📦</div>
-        <h3>Confirmaciones operativas</h3>
-      </div>
-      <p>Envía alertas de pedidos, entregas o citas y espera la confirmación del usuario por SMS. El agente cierra el ciclo, registra la respuesta y actualiza tu sistema — sin seguimiento manual.</p>
-      <div class="usecase-tags">
-        <span class="usecase-tag">✓ Logística · Servicios</span>
-        <span class="usecase-tag">✓ Webhook de respuesta</span>
       </div>
     </div>
 
@@ -1087,8 +1046,8 @@
   <!-- Header -->
   <div class="center">
     <span class="section-tag">Cómo funciona</span>
-    <h2 class="section-title">Tu agente opera con un<br>número de teléfono real</h2>
-    <p class="section-sub">Un número físico es el pasaporte del mundo digital. Cualquier plataforma, banco, red social o sistema crítico lo exige para confirmar que quien actúa es humano y legítimo. goauth.ai le entrega ese pasaporte a tu agente.</p>
+    <h2 class="section-title">El agente recibe el código.<br>Tú decides qué hacer con él.</h2>
+    <p class="section-sub">goauth.ai asigna un número de teléfono real a tu agente. Cuando cualquier plataforma envía un SMS de verificación a ese número, el agente lo recibe, extrae el código y lo entrega — a tu flujo automatizado o a una persona. Así de simple. Así de poderoso.</p>
   </div>
 
   <!-- Two-column: what the agent unlocks -->
@@ -1097,7 +1056,7 @@
     <div class="agent-powers-col">
       <div class="powers-heading">
         <span class="powers-dot dot-purple"></span>
-        Lo que el agente puede hacer
+        Con un número real, tu agente puede
       </div>
       <ul class="powers-list">
         <li>
@@ -1135,20 +1094,6 @@
             <span>Solicita datos, valida OTPs, activa cuentas y confirma registros paso a paso, sin que nadie de tu equipo intervenga.</span>
           </div>
         </li>
-        <li>
-          <span class="pl-icon">🛡️</span>
-          <div>
-            <strong>Detectar y bloquear accesos sospechosos</strong>
-            <span>Monitorea en tiempo real, identifica patrones anómalos y responde al instante — bloqueando o escalando sin demora.</span>
-          </div>
-        </li>
-        <li>
-          <span class="pl-icon">📦</span>
-          <div>
-            <strong>Confirmar pedidos, entregas y citas</strong>
-            <span>Cierra el ciclo de operaciones logísticas o de servicio respondiendo confirmaciones por SMS de forma autónoma.</span>
-          </div>
-        </li>
       </ul>
     </div>
 
@@ -1162,40 +1107,40 @@
           <div class="af-line"></div>
           <div class="af-dot"></div>
           <div class="af-content">
-            <strong>SIM real asignada al agente</strong>
-            <span>Tu agente recibe un número físico de empresa vía telsim.io. No VoIP, no virtual. Las plataformas lo ven como un humano real.</span>
+            <strong>Se asigna un número real al agente</strong>
+            <span>Tu agente recibe una SIM física vía telsim.io — no VoIP, no virtual. Cualquier plataforma lo reconoce como un número de empresa legítimo.</span>
           </div>
         </li>
         <li class="af-step step">
           <div class="af-line"></div>
           <div class="af-dot"></div>
           <div class="af-content">
-            <strong>Llega un SMS o solicitud</strong>
-            <span>Una plataforma, banco o sistema envía el OTP o la solicitud al número. El agente lo recibe en milisegundos vía webhook.</span>
+            <strong>La plataforma envía el SMS de verificación</strong>
+            <span>Un banco, exchange, red social o sistema crítico envía el OTP o código al número. El agente lo recibe al instante vía webhook de telsim.io.</span>
           </div>
         </li>
         <li class="af-step step">
           <div class="af-line"></div>
           <div class="af-dot"></div>
           <div class="af-content">
-            <strong>El agente razona y decide</strong>
-            <span>Evalúa el contexto según las reglas que configuraste: origen, monto, horario, flujo. ¿Es legítimo? ¿Está dentro de parámetros?</span>
+            <strong>El agente extrae el código</strong>
+            <span>Lee el mensaje, identifica el código de verificación y lo tiene listo para ser usado — en milisegundos, sin intervención humana.</span>
           </div>
         </li>
         <li class="af-step step">
           <div class="af-line"></div>
           <div class="af-dot"></div>
           <div class="af-content">
-            <strong>Ejecuta o bloquea y alerta</strong>
-            <span>Si todo cuadra, completa la acción solo. Si detecta algo fuera de lo normal, bloquea y te notifica antes de hacer nada.</span>
+            <strong>Lo entrega donde lo necesitas</strong>
+            <span>El código va directo a tu flujo automatizado (n8n, Make, API) para que el proceso continúe solo — o se lo notifica a una persona si el caso lo requiere.</span>
           </div>
         </li>
         <li class="af-step step">
           <div class="af-line af-line-last"></div>
           <div class="af-dot"></div>
           <div class="af-content">
-            <strong>Todo queda registrado</strong>
-            <span>Cada acción tiene trazabilidad completa. Tú supervisas desde el panel — el agente no para nunca.</span>
+            <strong>El proceso sigue sin parar</strong>
+            <span>Tu automatización completa el paso de verificación y continúa. Sin bloqueos, sin esperas, sin que nadie tenga que estar pendiente.</span>
           </div>
         </li>
       </ol>
