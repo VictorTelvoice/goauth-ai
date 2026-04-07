@@ -376,14 +376,83 @@
     .infra-features { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.25rem; }
     .infra-feat { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; }
     .infra-feat::before { content: '✓'; color: #60A5FA; font-weight: 700; }
-    .infra-btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(29,78,216,0.2); border: 1px solid rgba(29,78,216,0.5);
-      color: #93C5FD; padding: 0.75rem 1.5rem; border-radius: 10px;
-      font-weight: 700; font-size: 0.9rem; text-decoration: none;
-      transition: background 0.2s, border-color 0.2s; white-space: nowrap;
+    .infra-form {
+      width: min(100%, 340px);
+      background: rgba(8, 14, 34, 0.46);
+      border: 1px solid rgba(96,165,250,0.2);
+      border-radius: 18px;
+      padding: 1.1rem;
+      box-shadow: 0 18px 48px rgba(6, 10, 26, 0.25);
     }
-    .infra-btn:hover { background: rgba(29,78,216,0.35); border-color: rgba(29,78,216,0.8); }
+    .infra-form h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .infra-form p {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.55;
+      margin-bottom: 0.9rem;
+    }
+    .infra-form-grid {
+      display: grid;
+      gap: 0.72rem;
+    }
+    .infra-input,
+    .infra-textarea {
+      width: 100%;
+      border: 1px solid rgba(96,165,250,0.16);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 0.82rem 0.92rem;
+      font: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .infra-input::placeholder,
+    .infra-textarea::placeholder {
+      color: rgba(240,240,248,0.45);
+    }
+    .infra-input:focus,
+    .infra-textarea:focus {
+      border-color: rgba(139,92,246,0.55);
+      box-shadow: 0 0 0 4px rgba(108,59,255,0.12);
+      background: rgba(255,255,255,0.045);
+    }
+    .infra-textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+    .infra-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 0.88rem 1rem;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: #fff;
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(108,59,255,0.26);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .infra-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(108,59,255,0.34);
+    }
+    .infra-form-note {
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-align: center;
+      margin-top: 0.72rem;
+    }
 
     /* ── PRICING ── */
     .pricing-grid {
@@ -818,9 +887,18 @@
         <div class="infra-feat">Configuración rápida según tu caso de uso</div>
       </div>
     </div>
-    <a href="mailto:support@goauth.io" class="infra-btn">
-      Hablar con ventas →
-    </a>
+    <form class="infra-form" action="mailto:support@goauth.io" method="post" enctype="text/plain">
+      <h4>Solicita una demo</h4>
+      <p>Déjanos tus datos y te contactamos para mostrarte cómo se adapta goauth.ai a tu flujo.</p>
+      <div class="infra-form-grid">
+        <input class="infra-input" type="text" name="nombre" placeholder="Nombre" required />
+        <input class="infra-input" type="email" name="email" placeholder="Correo corporativo" required />
+        <input class="infra-input" type="text" name="empresa" placeholder="Empresa" />
+        <textarea class="infra-textarea" name="mensaje" placeholder="Cuéntanos qué proceso quieres automatizar"></textarea>
+        <button class="infra-submit" type="submit">Agendar Demo</button>
+      </div>
+      <div class="infra-form-note">O escríbenos directo a support@goauth.io</div>
+    </form>
   </div>
 </section>
 
