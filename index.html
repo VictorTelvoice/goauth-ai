@@ -162,12 +162,12 @@
       font-weight: 800;
     }
     .applications-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(240px, max-content));
+      display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem 2.75rem;
-      max-width: 840px;
+      flex-wrap: wrap;
+      gap: 1rem 2.25rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .application-pill {
@@ -592,6 +592,7 @@
         margin-bottom: 0.8rem;
       }
       .applications-row {
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.9rem 1rem;
         max-width: 100%;
@@ -809,13 +810,12 @@
     <div class="infra-banner-text">
       <span class="section-tag">Infraestructura</span>
       <h3>Infraestructura real para agentes verificadores</h3>
-      <p>La razon por la que goauth.ai funciona donde otros fallan: combina automatizacion, eventos en tiempo real y una capa operativa pensada para procesos de verificacion, autenticacion y conversion.</p>
+      <p>goauth.ai combina canales reales, eventos en tiempo real y automatización para operar procesos de verificación, autenticación y conversión.</p>
       <div class="infra-features">
-        <div class="infra-feat">Canales reales de comunicacion para validacion y autenticacion</div>
-        <div class="infra-feat">Eventos en tiempo real para OTP, alertas y aprobaciones</div>
-        <div class="infra-feat">Compatible con flujos de identidad, transferencias, onboarding y marketing</div>
-        <div class="infra-feat">API-first con integracion en Make, n8n, Zapier y sistemas propios</div>
-        <div class="infra-feat">Activacion rapida y entrenamiento segun tu caso de uso</div>
+        <div class="infra-feat">Canales reales para validación y autenticación</div>
+        <div class="infra-feat">Eventos en tiempo real para OTP y alertas</div>
+        <div class="infra-feat">Integración API con Make, n8n, Whatsaap y Telegram</div>
+        <div class="infra-feat">Configuración rápida según tu caso de uso</div>
       </div>
     </div>
     <a href="mailto:support@goauth.io" class="infra-btn">
