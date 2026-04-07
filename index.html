@@ -399,7 +399,7 @@
     .agent-powers-wrap {
       display: grid; grid-template-columns: 1fr;
       gap: 2rem; margin-top: 4rem; align-items: start;
-      max-width: 760px; margin-left: auto; margin-right: auto;
+      max-width: 1120px; margin-left: auto; margin-right: auto;
     }
     .powers-heading {
       display: flex; align-items: center; gap: 0.6rem;
@@ -429,29 +429,201 @@
     }
     .powers-list span { color: var(--muted); font-size: 0.82rem; line-height: 1.65; }
 
-    /* Agent flow timeline */
-    .agent-flow { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    /* Agent flow pipeline */
+    .agent-flow {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.25rem;
+      position: relative;
+      padding-top: 0.75rem;
+    }
+    .agent-flow::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 9%;
+      right: 9%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(108,59,255,0.16), rgba(0,229,192,0.3), rgba(108,59,255,0.16));
+      box-shadow: 0 0 18px rgba(0,229,192,0.08);
+    }
     .af-step {
-      display: flex; gap: 1rem; align-items: flex-start;
-      position: relative; padding-bottom: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.95rem;
+      position: relative;
+      padding: 0;
+      z-index: 1;
     }
-    .af-step:last-child { padding-bottom: 0; }
-    .af-dot {
-      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
-      background: var(--accent); margin-top: 0.35rem;
-      box-shadow: 0 0 0 3px rgba(0,229,192,0.15);
-      position: relative; z-index: 1;
+    .af-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
     }
-    .af-line {
-      position: absolute; left: 5px; top: 18px;
-      width: 2px; height: calc(100% - 6px);
-      background: linear-gradient(to bottom, rgba(0,229,192,0.3), rgba(0,229,192,0.05));
+    .af-index {
+      min-width: 34px;
+      height: 22px;
+      padding: 0 0.48rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      box-shadow: 0 8px 18px rgba(108,59,255,0.18);
     }
-    .af-line-last { display: none; }
+    .af-glyph {
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 38%),
+        linear-gradient(180deg, rgba(108,59,255,0.22), rgba(0,229,192,0.08)),
+        rgba(255,255,255,0.03);
+      border: 1px solid rgba(108,59,255,0.2);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 16px 34px rgba(10,10,20,0.18),
+        0 0 0 8px rgba(108,59,255,0.04);
+      position: relative;
+    }
+    .af-glyph::before,
+    .af-glyph::after {
+      content: '';
+      position: absolute;
+      box-sizing: border-box;
+    }
+    .glyph-sim::before {
+      width: 18px;
+      height: 22px;
+      border: 1.8px solid #a78bfa;
+      border-radius: 5px;
+      top: 50%;
+      left: 50%;
+      background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(0,229,192,0.06));
+      transform: translate(-50%, -50%);
+    }
+    .glyph-sim::after {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      border: 1.6px solid rgba(0,229,192,0.8);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -12%);
+      box-shadow:
+        0 6px 0 -4px rgba(0,229,192,0.75),
+        6px 0 0 -4px rgba(0,229,192,0.75),
+        -6px 0 0 -4px rgba(0,229,192,0.75);
+    }
+    .glyph-message::before {
+      width: 22px;
+      height: 16px;
+      border: 1.8px solid #a78bfa;
+      border-radius: 5px;
+      top: 50%;
+      left: 50%;
+      background: rgba(255,255,255,0.02);
+      transform: translate(-50%, -56%);
+    }
+    .glyph-message::after {
+      width: 8px;
+      height: 8px;
+      border-left: 1.8px solid #a78bfa;
+      border-bottom: 1.8px solid #a78bfa;
+      top: 50%;
+      left: 50%;
+      transform: translate(-88%, 18%) skewX(-28deg) rotate(-14deg);
+      border-bottom-left-radius: 2px;
+    }
+    .glyph-parse::before {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,229,192,0.9);
+      top: 50%;
+      left: 50%;
+      transform: translate(-58%, -58%);
+    }
+    .glyph-parse::after {
+      width: 9px;
+      height: 2px;
+      background: rgba(167,139,250,0.95);
+      top: 50%;
+      left: 50%;
+      transform: translate(18%, 210%) rotate(45deg);
+      border-radius: 999px;
+      box-shadow: -8px -8px 0 0 rgba(167,139,250,0.95);
+    }
+    .glyph-route::before {
+      width: 22px;
+      height: 2px;
+      background: linear-gradient(90deg, #a78bfa, #00e5c0);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      box-shadow:
+        0 -8px 0 -0.5px rgba(167,139,250,0.7),
+        0 8px 0 -0.5px rgba(0,229,192,0.7);
+    }
+    .glyph-route::after {
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid #00e5c0;
+      border-top: 2px solid #00e5c0;
+      top: 50%;
+      left: 50%;
+      transform: translate(72%, -50%) rotate(45deg);
+    }
+    .glyph-run::before {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(167,139,250,0.9);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 0 0 5px rgba(0,229,192,0.08);
+    }
+    .glyph-run::after {
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #00e5c0;
+      border-top: 2px solid #00e5c0;
+      top: 50%;
+      left: 50%;
+      transform: translate(16%, -122%) rotate(35deg);
+      border-radius: 2px;
+    }
+    .af-arrow { display: none; }
+    .af-content {
+      padding: 0 0.12rem;
+      min-height: 100%;
+    }
     .af-content strong {
-      display: block; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem;
+      display: block;
+      font-size: 0.94rem;
+      font-weight: 800;
+      margin-bottom: 0.18rem;
+      letter-spacing: -0.01em;
     }
-    .af-content span { color: var(--muted); font-size: 0.82rem; line-height: 1.65; }
+    .af-content span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.48;
+    }
 
     /* SMS Command strip */
     .sms-command-strip {
@@ -479,6 +651,10 @@
     .sms-bubble {
       padding: 0.7rem 1rem; border-radius: 12px;
       font-size: 0.82rem; line-height: 1.5; max-width: 88%;
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(6px);
+      animation: smsArrival 0.7s ease-out forwards;
     }
     .sms-meta {
       display: block; font-size: 0.68rem; font-weight: 700;
@@ -495,10 +671,45 @@
       color: var(--text); align-self: flex-start;
       border-bottom-left-radius: 4px;
     }
+    .sms-cmd-right .sms-bubble:nth-child(1) { animation-delay: 0.05s; }
+    .sms-cmd-right .sms-bubble:nth-child(2) { animation-delay: 0.42s; }
+    .sms-cmd-right .sms-bubble:nth-child(3) { animation-delay: 0.86s; }
+    .sms-cmd-right .sms-bubble:nth-child(4) { animation-delay: 1.24s; }
+
+    @keyframes smsArrival {
+      0% {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
 
     @media (max-width: 900px) {
       .agent-powers-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
       .sms-command-strip { grid-template-columns: 1fr; }
+      .agent-flow {
+        grid-template-columns: 1fr;
+        gap: 1.65rem;
+        max-width: 520px;
+        margin: 0 auto;
+        padding-top: 0;
+      }
+      .agent-flow::before {
+        display: none;
+      }
+      .af-step {
+        gap: 0.8rem;
+      }
+      .af-glyph {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+      }
     }
 
     /* ── INFRA BANNER ── */
@@ -950,7 +1161,6 @@
           <span class="pill pill-blue">Make / N8N</span>
           <span class="pill pill-blue">API REST</span>
           <span class="pill pill-blue">Webhooks</span>
-          <span class="pill pill-blue">OTP y eventos</span>
         </div>
       </div>
     </div>
@@ -1053,40 +1263,55 @@
     <div class="agent-powers-col">
       <ol class="agent-flow">
         <li class="af-step step">
-          <div class="af-line"></div>
-          <div class="af-dot"></div>
+          <div class="af-visual">
+            <div class="af-index">01</div>
+            <div class="af-glyph glyph-sim"></div>
+            <div class="af-arrow"></div>
+          </div>
           <div class="af-content">
             <strong>Se asigna un número real al agente</strong>
             <span>El agente opera con una SIM física, no con VoIP ni números virtuales.</span>
           </div>
         </li>
         <li class="af-step step">
-          <div class="af-line"></div>
-          <div class="af-dot"></div>
+          <div class="af-visual">
+            <div class="af-index">02</div>
+            <div class="af-glyph glyph-message"></div>
+            <div class="af-arrow"></div>
+          </div>
           <div class="af-content">
             <strong>Recibe el SMS de verificación</strong>
             <span>La plataforma envía el OTP o código y el agente lo recibe en tiempo real.</span>
           </div>
         </li>
         <li class="af-step step">
-          <div class="af-line"></div>
-          <div class="af-dot"></div>
+          <div class="af-visual">
+            <div class="af-index">03</div>
+            <div class="af-glyph glyph-parse"></div>
+            <div class="af-arrow"></div>
+          </div>
           <div class="af-content">
             <strong>Extrae y entiende el mensaje</strong>
             <span>Identifica el código o dato clave y lo prepara para el siguiente paso.</span>
           </div>
         </li>
         <li class="af-step step">
-          <div class="af-line"></div>
-          <div class="af-dot"></div>
+          <div class="af-visual">
+            <div class="af-index">04</div>
+            <div class="af-glyph glyph-route"></div>
+            <div class="af-arrow"></div>
+          </div>
           <div class="af-content">
             <strong>Lo entrega a tu flujo</strong>
             <span>Envía el dato a n8n, Make, API o a una persona a traves de Whatsaap o Telegram, según tu operación.</span>
           </div>
         </li>
         <li class="af-step step">
-          <div class="af-line af-line-last"></div>
-          <div class="af-dot"></div>
+          <div class="af-visual">
+            <div class="af-index">05</div>
+            <div class="af-glyph glyph-run"></div>
+            <div class="af-arrow"></div>
+          </div>
           <div class="af-content">
             <strong>La automatización continúa</strong>
             <span>El proceso sigue sin bloqueos ni intervención manual.</span>
@@ -1102,7 +1327,7 @@
     <div class="sms-cmd-left">
       <div class="sms-cmd-badge">Sin internet</div>
       <h4>Controla tu agente por SMS desde cualquier lugar</h4>
-      <p>Puedes enviar instrucciones directamente a tu agente a través de un simple SMS desde tu propio número — sin apps, sin WiFi, sin conexión. El agente recibe la orden, la procesa y actúa. Útil en zonas sin cobertura de datos, emergencias o situaciones donde la velocidad es crítica.</p>
+      <p>Envía instrucciones a tu agente por SMS desde un número previamente validado. No necesitas apps, WiFi ni datos móviles. El agente recibe la orden, la procesa y actúa, con una capa extra de seguridad: solo responde a mensajes autorizados y la instrucción viaja por SMS, sin dejar exposición operativa en internet. Útil en zonas sin cobertura de datos, emergencias o situaciones donde la velocidad es crítica.</p>
     </div>
     <div class="sms-cmd-right">
       <div class="sms-bubble sms-out">
@@ -1235,7 +1460,6 @@
   <div class="center">
     <span class="section-tag">Testimonios</span>
     <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-    <p class="section-sub">Sección preparada para mostrar reseñas reales con calificación visible y lectura rápida en desktop y móvil.</p>
   </div>
   <div class="testimonials-slider">
     <div class="testimonials-track">
