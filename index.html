@@ -42,11 +42,17 @@
     }
     .logo {
       font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      color: #fff;
       text-decoration: none;
     }
-    .logo span { -webkit-text-fill-color: var(--brand-light); }
+    .logo .logo-auth {
+      background: linear-gradient(135deg, var(--accent) 0%, #d7fff7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo .logo-dotai {
+      color: var(--brand-light);
+    }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav ul li a {
       color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500;
@@ -721,7 +727,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">goauth<span>.ai</span></a>
+  <a href="#" class="logo">Go<span class="logo-auth">Auth</span><span class="logo-dotai">.ai</span></a>
   <ul>
     <li><a href="#como-funciona">Cómo funciona</a></li>
     <li><a href="#casos">Casos de uso</a></li>
@@ -1093,7 +1099,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="logo" style="font-size:1.3rem;">goauth<span style="-webkit-text-fill-color: var(--brand-light);">.ai</span></a>
+      <a href="#" class="logo" style="font-size:1.3rem;">Go<span class="logo-auth">Auth</span><span class="logo-dotai">.ai</span></a>
       <p>Agentes verificadores con IA para procesos reales de autenticacion, identidad y conversion.</p>
     </div>
     <div class="footer-link-group">
