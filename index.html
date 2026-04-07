@@ -390,38 +390,109 @@
     .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
 
-    /* ── CAPABILITY GRID ── */
-    .capability-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin-top: 3.5rem;
+    /* ── AGENT POWERS ── */
+    .agent-powers-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; margin-top: 4rem; align-items: start;
     }
-    .cap-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.75rem;
-      transition: border-color 0.3s, transform 0.3s;
+    .powers-heading {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem;
     }
-    .cap-card:hover { border-color: var(--brand-light); transform: translateY(-3px); }
-    .cap-icon {
-      font-size: 1.8rem; margin-bottom: 1rem;
-      width: 48px; height: 48px;
-      background: rgba(108,59,255,0.12); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .cap-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.55rem; }
-    .cap-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.75; }
+    .powers-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-purple { background: var(--brand-light); box-shadow: 0 0 0 3px rgba(139,92,246,0.2); }
+    .dot-accent  { background: var(--accent);      box-shadow: 0 0 0 3px rgba(0,229,192,0.2); }
 
-    /* ── FLOW DIVIDER ── */
-    .flow-divider {
-      display: flex; align-items: center; gap: 1rem;
-      margin: 3.5rem 0 3rem;
-      color: var(--muted); font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase;
+    /* Powers list */
+    .powers-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .powers-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .flow-divider::before, .flow-divider::after {
-      content: ''; flex: 1; height: 1px; background: var(--border);
+    .powers-list li:last-child { border-bottom: none; }
+    .pl-icon {
+      font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem;
+      width: 34px; height: 34px; display: flex; align-items: center;
+      justify-content: center; background: rgba(108,59,255,0.1);
+      border-radius: 8px;
+    }
+    .powers-list strong {
+      display: block; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem;
+    }
+    .powers-list span { color: var(--muted); font-size: 0.82rem; line-height: 1.65; }
+
+    /* Agent flow timeline */
+    .agent-flow { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .af-step {
+      display: flex; gap: 1rem; align-items: flex-start;
+      position: relative; padding-bottom: 1.75rem;
+    }
+    .af-step:last-child { padding-bottom: 0; }
+    .af-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+      background: var(--accent); margin-top: 0.35rem;
+      box-shadow: 0 0 0 3px rgba(0,229,192,0.15);
+      position: relative; z-index: 1;
+    }
+    .af-line {
+      position: absolute; left: 5px; top: 18px;
+      width: 2px; height: calc(100% - 6px);
+      background: linear-gradient(to bottom, rgba(0,229,192,0.3), rgba(0,229,192,0.05));
+    }
+    .af-line-last { display: none; }
+    .af-content strong {
+      display: block; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem;
+    }
+    .af-content span { color: var(--muted); font-size: 0.82rem; line-height: 1.65; }
+
+    /* SMS Command strip */
+    .sms-command-strip {
+      margin-top: 3.5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(0,229,192,0.06), rgba(108,59,255,0.08));
+      border: 1px solid rgba(0,229,192,0.2);
+      border-radius: 20px; padding: 2.5rem 3rem;
+    }
+    .sms-cmd-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(0,229,192,0.12); border: 1px solid rgba(0,229,192,0.3);
+      color: var(--accent); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem;
+    }
+    .sms-cmd-badge::before { content: '📡'; font-size: 0.8rem; }
+    .sms-cmd-left h4 {
+      font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem;
+      letter-spacing: -0.02em; line-height: 1.3;
+    }
+    .sms-cmd-left p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
+    .sms-cmd-right { display: flex; flex-direction: column; gap: 0.65rem; }
+    .sms-bubble {
+      padding: 0.7rem 1rem; border-radius: 12px;
+      font-size: 0.82rem; line-height: 1.5; max-width: 88%;
+    }
+    .sms-meta {
+      display: block; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      opacity: 0.55; margin-bottom: 0.3rem;
+    }
+    .sms-out {
+      background: rgba(108,59,255,0.18); border: 1px solid rgba(108,59,255,0.25);
+      color: var(--text); align-self: flex-end; margin-left: auto;
+      border-bottom-right-radius: 4px;
+    }
+    .sms-in {
+      background: rgba(0,229,192,0.1); border: 1px solid rgba(0,229,192,0.2);
+      color: var(--text); align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .agent-powers-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sms-command-strip { grid-template-columns: 1fr; }
     }
 
     /* ── INFRA BANNER ── */
@@ -949,78 +1020,153 @@
 
 <!-- CÓMO FUNCIONA -->
 <section id="como-funciona" style="background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+
+  <!-- Header -->
   <div class="center">
     <span class="section-tag">Cómo funciona</span>
-    <h2 class="section-title">Un número real.<br>Posibilidades ilimitadas.</h2>
-    <p class="section-sub">El número de teléfono es el pasaporte del mundo digital. Toda plataforma, banco, red social o marketplace lo exige para verificar que eres humano y real. goauth.ai te da un agente que opera con ese pasaporte — autónomamente, a cualquier escala.</p>
+    <h2 class="section-title">Tu agente opera con un<br>número de teléfono real</h2>
+    <p class="section-sub">Un número físico es el pasaporte del mundo digital. Cualquier plataforma, banco, red social o sistema crítico lo exige para confirmar que quien actúa es humano y legítimo. goauth.ai le entrega ese pasaporte a tu agente.</p>
   </div>
 
-  <!-- Capability grid -->
-  <div class="capability-grid">
-    <div class="cap-card arch-reveal" style="--arch-delay: 0s;">
-      <div class="cap-icon">🧑‍💻</div>
-      <h4>Crear cuentas como humano</h4>
-      <p>El agente puede registrarse en cualquier plataforma que exija verificación SMS — exchanges, marketplaces, redes sociales, SaaS, bancos digitales — y validar la cuenta de forma completamente autónoma.</p>
+  <!-- Two-column: what the agent unlocks -->
+  <div class="agent-powers-wrap">
+
+    <div class="agent-powers-col">
+      <div class="powers-heading">
+        <span class="powers-dot dot-purple"></span>
+        Lo que el agente puede hacer
+      </div>
+      <ul class="powers-list">
+        <li>
+          <span class="pl-icon">🔐</span>
+          <div>
+            <strong>Validar cualquier OTP o 2FA</strong>
+            <span>Recibe, lee y completa verificaciones SMS de cualquier plataforma — bancos, exchanges, Google, Meta, Stripe, WhatsApp Business.</span>
+          </div>
+        </li>
+        <li>
+          <span class="pl-icon">🧑‍💻</span>
+          <div>
+            <strong>Crear y activar cuentas como humano</strong>
+            <span>Se registra en plataformas que exigen número real, valida la cuenta de forma autónoma y la entrega lista para operar.</span>
+          </div>
+        </li>
+        <li>
+          <span class="pl-icon">🏦</span>
+          <div>
+            <strong>Autorizar transacciones y accesos críticos</strong>
+            <span>Sustituye al responsable de tesorería o al directivo que tiene el chip de empresa. Valida que cada operación sea legítima antes de ejecutar.</span>
+          </div>
+        </li>
+        <li>
+          <span class="pl-icon">📣</span>
+          <div>
+            <strong>Ejecutar campañas de marketing conversacional</strong>
+            <span>Envía y responde mensajes por WhatsApp, SMS o Telegram desde un número verificado — sin que ningún filtro lo detecte como bot.</span>
+          </div>
+        </li>
+        <li>
+          <span class="pl-icon">🚀</span>
+          <div>
+            <strong>Guiar el onboarding completo de usuarios</strong>
+            <span>Solicita datos, valida OTPs, activa cuentas y confirma registros paso a paso, sin que nadie de tu equipo intervenga.</span>
+          </div>
+        </li>
+        <li>
+          <span class="pl-icon">🛡️</span>
+          <div>
+            <strong>Detectar y bloquear accesos sospechosos</strong>
+            <span>Monitorea en tiempo real, identifica patrones anómalos y responde al instante — bloqueando o escalando sin demora.</span>
+          </div>
+        </li>
+        <li>
+          <span class="pl-icon">📦</span>
+          <div>
+            <strong>Confirmar pedidos, entregas y citas</strong>
+            <span>Cierra el ciclo de operaciones logísticas o de servicio respondiendo confirmaciones por SMS de forma autónoma.</span>
+          </div>
+        </li>
+      </ul>
     </div>
-    <div class="cap-card arch-reveal" style="--arch-delay: 0.07s;">
-      <div class="cap-icon">🔐</div>
-      <h4>Validar cualquier 2FA / OTP</h4>
-      <p>WhatsApp Business, Google, Meta, Binance, Stripe, plataformas bancarias. Si la verificación llega por SMS, el agente la recibe, la interpreta y la completa sin intervención humana.</p>
+
+    <div class="agent-powers-col">
+      <div class="powers-heading">
+        <span class="powers-dot dot-accent"></span>
+        Cómo fluye una operación
+      </div>
+      <ol class="agent-flow">
+        <li class="af-step step">
+          <div class="af-line"></div>
+          <div class="af-dot"></div>
+          <div class="af-content">
+            <strong>SIM real asignada al agente</strong>
+            <span>Tu agente recibe un número físico de empresa vía telsim.io. No VoIP, no virtual. Las plataformas lo ven como un humano real.</span>
+          </div>
+        </li>
+        <li class="af-step step">
+          <div class="af-line"></div>
+          <div class="af-dot"></div>
+          <div class="af-content">
+            <strong>Llega un SMS o solicitud</strong>
+            <span>Una plataforma, banco o sistema envía el OTP o la solicitud al número. El agente lo recibe en milisegundos vía webhook.</span>
+          </div>
+        </li>
+        <li class="af-step step">
+          <div class="af-line"></div>
+          <div class="af-dot"></div>
+          <div class="af-content">
+            <strong>El agente razona y decide</strong>
+            <span>Evalúa el contexto según las reglas que configuraste: origen, monto, horario, flujo. ¿Es legítimo? ¿Está dentro de parámetros?</span>
+          </div>
+        </li>
+        <li class="af-step step">
+          <div class="af-line"></div>
+          <div class="af-dot"></div>
+          <div class="af-content">
+            <strong>Ejecuta o bloquea y alerta</strong>
+            <span>Si todo cuadra, completa la acción solo. Si detecta algo fuera de lo normal, bloquea y te notifica antes de hacer nada.</span>
+          </div>
+        </li>
+        <li class="af-step step">
+          <div class="af-line af-line-last"></div>
+          <div class="af-dot"></div>
+          <div class="af-content">
+            <strong>Todo queda registrado</strong>
+            <span>Cada acción tiene trazabilidad completa. Tú supervisas desde el panel — el agente no para nunca.</span>
+          </div>
+        </li>
+      </ol>
     </div>
-    <div class="cap-card arch-reveal" style="--arch-delay: 0.14s;">
-      <div class="cap-icon">🏦</div>
-      <h4>Autorizar transacciones críticas</h4>
-      <p>El agente reemplaza al director financiero o responsable de tesorería que tiene el chip de la empresa. Valida que cada transferencia sea legítima antes de ejecutar el OTP — o la bloquea y alerta al instante.</p>
+
+  </div>
+
+  <!-- SMS Command highlight strip -->
+  <div class="sms-command-strip arch-reveal" style="--arch-delay: 0.1s;">
+    <div class="sms-cmd-left">
+      <div class="sms-cmd-badge">Sin internet</div>
+      <h4>Controla tu agente por SMS desde cualquier lugar</h4>
+      <p>Puedes enviar instrucciones directamente a tu agente a través de un simple SMS desde tu propio número — sin apps, sin WiFi, sin conexión. El agente recibe la orden, la procesa y actúa. Útil en zonas sin cobertura de datos, emergencias o situaciones donde la velocidad es crítica.</p>
     </div>
-    <div class="cap-card arch-reveal" style="--arch-delay: 0.21s;">
-      <div class="cap-icon">📣</div>
-      <h4>Marketing con número verificado</h4>
-      <p>Lanza campañas de WhatsApp, SMS o Telegram desde un número real de empresa. El agente responde, califica leads y agenda demos — sin que nadie lo detecte como bot o lo bloquee.</p>
-    </div>
-    <div class="cap-card arch-reveal" style="--arch-delay: 0.28s;">
-      <div class="cap-icon">🚀</div>
-      <h4>Onboarding autónomo de usuarios</h4>
-      <p>Guía a nuevos usuarios paso a paso: solicita datos, valida OTPs en su nombre, activa cuentas y confirma registros — todo en un flujo sin fricción y sin intervención de tu equipo.</p>
-    </div>
-    <div class="cap-card arch-reveal" style="--arch-delay: 0.35s;">
-      <div class="cap-icon">🛡️</div>
-      <h4>Detección y respuesta a fraudes</h4>
-      <p>El agente monitorea intentos de acceso sospechosos y responde en tiempo real: bloquea, solicita verificación adicional o escala la alerta — protegiendo cuentas sin que nadie esté pendiente.</p>
+    <div class="sms-cmd-right">
+      <div class="sms-bubble sms-out">
+        <span class="sms-meta">Tú → Agente</span>
+        APROBAR transferencia 12,000 USD cuenta BCP
+      </div>
+      <div class="sms-bubble sms-in">
+        <span class="sms-meta">Agente → Tú</span>
+        ✓ Transferencia validada y ejecutada. ID: #TXN-8821. 14:32 UTC
+      </div>
+      <div class="sms-bubble sms-out">
+        <span class="sms-meta">Tú → Agente</span>
+        BLOQUEAR acceso cuenta AWS hasta nuevo aviso
+      </div>
+      <div class="sms-bubble sms-in">
+        <span class="sms-meta">Agente → Tú</span>
+        ✓ Acceso bloqueado. Alerta enviada al equipo de seguridad.
+      </div>
     </div>
   </div>
 
-  <!-- How it flows -->
-  <div class="flow-divider">
-    <span>¿Cómo opera el agente?</span>
-  </div>
-
-  <div class="how-grid">
-    <div class="step" style="--step-delay: 0s;">
-      <div class="step-num">1</div>
-      <h3>Número real asignado</h3>
-      <p>Tu agente recibe una SIM física real de telsim.io — no VoIP, no virtual — vinculada a tus cuentas, plataformas o flujos de negocio.</p>
-    </div>
-    <div class="step" style="--step-delay: 0.08s;">
-      <div class="step-num">2</div>
-      <h3>Recibe la verificación</h3>
-      <p>Cualquier plataforma envía un SMS, OTP o solicitud de autorización al número. El agente lo recibe al instante vía webhook — en milisegundos.</p>
-    </div>
-    <div class="step" style="--step-delay: 0.16s;">
-      <div class="step-num">3</div>
-      <h3>Analiza el contexto</h3>
-      <p>Antes de actuar, el agente evalúa: ¿es un flujo legítimo? ¿Coincide con las reglas configuradas? ¿Es el origen, monto y horario esperado?</p>
-    </div>
-    <div class="step" style="--step-delay: 0.24s;">
-      <div class="step-num">4</div>
-      <h3>Ejecuta o escala</h3>
-      <p>Si todo es válido, completa la acción de forma autónoma. Si detecta algo anómalo, bloquea y notifica al responsable en segundos.</p>
-    </div>
-    <div class="step" style="--step-delay: 0.32s;">
-      <div class="step-num">5</div>
-      <h3>Registro completo</h3>
-      <p>Cada operación queda documentada con trazabilidad total. Tú supervisas, el agente ejecuta — sin depender de que alguien esté disponible.</p>
-    </div>
-  </div>
 </section>
 
 <!-- PRECIOS -->
