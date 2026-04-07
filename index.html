@@ -332,12 +332,19 @@
       transition: border-color 0.3s, transform 0.3s;
     }
     .usecase-card:hover { border-color: var(--brand-light); transform: translateY(-4px); }
+    .usecase-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
     .usecase-icon {
       width: 50px; height: 50px; background: rgba(108,59,255,0.15);
       border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+      flex-shrink: 0;
     }
-    .usecase-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .usecase-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0; }
     .usecase-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
     .usecase-tag {
       display: inline-block; margin-top: 1rem;
@@ -720,6 +727,9 @@
         scroll-snap-align: start;
         min-height: 100%;
       }
+      .usecase-head {
+        gap: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -732,6 +742,7 @@
     <li><a href="#como-funciona">Cómo funciona</a></li>
     <li><a href="#casos">Casos de uso</a></li>
     <li><a href="#precios">Precios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
     <li><a href="mailto:support@goauth.io" class="nav-cta">Agendar Demo</a></li>
   </ul>
   <a href="mailto:support@goauth.io" class="nav-cta mobile-nav-cta">Agendar Demo</a>
@@ -831,26 +842,34 @@
   </div>
   <div class="usecases-grid">
     <div class="usecase-card">
-      <div class="usecase-icon">🆔</div>
-      <h3>Verificación de Identidad</h3>
+      <div class="usecase-head">
+        <div class="usecase-icon">🆔</div>
+        <h3>Verificación de Identidad</h3>
+      </div>
       <p>Confirma la identidad de usuarios y destraba accesos sensibles sin depender de intervención humana en cada paso.</p>
       <span class="usecase-tag">✓ SIM real · sin bloqueos</span>
     </div>
     <div class="usecase-card">
-      <div class="usecase-icon">💳</div>
-      <h3>Autorización de Transferencias</h3>
+      <div class="usecase-head">
+        <div class="usecase-icon">💳</div>
+        <h3>Autorización de Transferencias</h3>
+      </div>
       <p>Valida operaciones críticas en tiempo real y reduce fricción sin perder control sobre decisiones sensibles.</p>
       <span class="usecase-tag">✓ OTP + Webhook instantáneo</span>
     </div>
     <div class="usecase-card">
-      <div class="usecase-icon">📲</div>
-      <h3>Marketing Conversacional</h3>
+      <div class="usecase-head">
+        <div class="usecase-icon">📲</div>
+        <h3>Marketing Conversacional</h3>
+      </div>
       <p>Convierte conversaciones en oportunidades reales con agentes que responden, califican y derivan leads automáticamente.</p>
       <span class="usecase-tag">✓ WhatsApp · Telegram · SMS</span>
     </div>
     <div class="usecase-card">
-      <div class="usecase-icon">🔔</div>
-      <h3>Notificaciones con Confirmación</h3>
+      <div class="usecase-head">
+        <div class="usecase-icon">🔔</div>
+        <h3>Notificaciones con Confirmación</h3>
+      </div>
       <p>Envía alertas, espera confirmación y registra respuesta para cerrar el circuito sin perseguir al usuario manualmente.</p>
       <span class="usecase-tag">✓ 24/7 sin intervencion</span>
     </div>
@@ -894,7 +913,7 @@
 </section>
 
 <!-- INFRA HIGHLIGHT -->
-<section style="background: var(--dark);">
+<section id="contacto" style="background: var(--dark);">
   <div class="infra-banner">
     <div class="infra-banner-text">
       <span class="section-tag">Infraestructura</span>
@@ -929,13 +948,13 @@
     <div class="billing-toggle" aria-label="Selector de facturacion">
       <button type="button" class="active" data-billing="monthly">Mensual</button>
       <button type="button" data-billing="annual">Anual</button>
-      <span class="billing-save">Ahorra 20%</span>
+      <span class="billing-save">Ahorra 30%</span>
     </div>
   </div>
 
   <div class="pricing-grid">
     <!-- BÁSICO -->
-    <div class="price-card" data-monthly-price="$90" data-monthly-original="$299 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$239" data-annual-original="$299 / mes" data-annual-period="/ mes" data-annual-badge="20% OFF con pago anual" data-annual-caption="Facturado anualmente en $2,868">
+    <div class="price-card" data-monthly-price="$90" data-monthly-original="$299 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$209" data-annual-original="$299 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $2,508">
       <div class="plan-name">Básico</div>
       <div class="price-original">$299 / mes</div>
       <div class="price-main">
@@ -955,7 +974,7 @@
     </div>
 
     <!-- PRO -->
-    <div class="price-card featured" data-monthly-price="$180" data-monthly-original="$599 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$479" data-annual-original="$599 / mes" data-annual-period="/ mes" data-annual-badge="20% OFF con pago anual" data-annual-caption="Facturado anualmente en $5,748">
+    <div class="price-card featured" data-monthly-price="$180" data-monthly-original="$599 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$419" data-annual-original="$599 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $5,028">
       <div class="featured-badge">Más popular</div>
       <div class="plan-name">Pro</div>
       <div class="price-original">$599 / mes</div>
@@ -976,7 +995,7 @@
     </div>
 
     <!-- POWER -->
-    <div class="price-card" data-monthly-price="$297" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$792" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="20% OFF con pago anual" data-annual-caption="Facturado anualmente en $9,504">
+    <div class="price-card" data-monthly-price="$297" data-monthly-original="$990 / mes" data-monthly-period="/ mes" data-monthly-badge="🔥 70% OFF — primeros 3 meses" data-monthly-caption="" data-annual-price="$693" data-annual-original="$990 / mes" data-annual-period="/ mes" data-annual-badge="30% OFF con pago anual" data-annual-caption="Facturado anualmente en $8,316">
       <div class="plan-name">Power</div>
       <div class="price-original">$990 / mes</div>
       <div class="price-main">
@@ -1102,15 +1121,18 @@
       <a href="#casos">Casos de uso</a>
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#precios">Precios</a>
+      <a href="#contacto">Contacto</a>
     </div>
     <div class="footer-link-group">
       <h5>Explorar</h5>
       <a href="#casos">Casos de uso</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#precios">Precios</a>
+      <a href="#contacto">Contacto</a>
     </div>
     <div class="footer-link-group">
       <h5>Contacto</h5>
+      <a href="#contacto">Formulario de contacto</a>
       <a href="mailto:support@goauth.io">support@goauth.io</a>
       <a href="mailto:support@goauth.io">Solicitar demo</a>
     </div>
