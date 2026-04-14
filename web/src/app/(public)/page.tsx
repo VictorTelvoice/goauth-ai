@@ -70,8 +70,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <main style={{ backgroundColor: 'var(--dark)' }}>
-      <Navbar />
+    <>
       <Hero />
       <ArchitectureStack />
       <UseCases />
@@ -81,7 +80,6 @@ export default function LandingPage() {
       <Testimonials />
       <InfraBanner />
       <CTASection />
-      <Footer />
-    </main>
+    </>
   );
 }

@@ -1,24 +1,46 @@
 @import "tailwindcss";
+@source "../../**/*.{js,ts,jsx,tsx,mdx}";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-@source "../**/*.{js,ts,jsx,tsx,mdx}";
 
 /* ── CONFIGURACIÓN BASE ORIGINAL ── */
-:root {
-  --brand: #6C3BFF;
-  --brand-light: #8B5CF6;
-  --brand-dark: #4C1D95;
-  --accent: #00E5C0;
-  --infra: #1D4ED8;
-  --dark: #0A0A14;
-  --dark2: #12121F;
-  --surface: #1A1A2E;
-  --border: rgba(255,255,255,0.08);
-  --text: #F0F0F8;
-  --muted: #9090A8;
+@theme {
+  /* ── BRAND TOKENS ── */
+  --color-brand: #6C3BFF;
+  --color-brand-light: #8B5CF6;
+  --color-brand-dark: #4C1D95;
+  --color-accent: #00E5C0;
+  --color-infra: #1D4ED8;
+  
+  /* ── SURFACES & DEPTH ── */
+  --color-dark: #000000;
+  --color-dark-alt: #0A0A14;
+  --color-dark2: #12121F;
+  --color-surface: #1A1A2E;
+  
+  /* ── INTERFACE ── */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-text: #F0F0F8;
+  --color-muted: #9090A8;
+  
+  /* ── TYPOGRAPHY ── */
+  --font-inter: "Inter", sans-serif;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* Mantener variables CSS para compatibilidad con código legacy que usa var() */
+  --brand: var(--color-brand);
+  --brand-light: var(--color-brand-light);
+  --brand-dark: var(--color-brand-dark);
+  --accent: var(--color-accent);
+  --dark: var(--color-dark-alt);
+  --dark2: var(--color-dark2);
+  --surface: var(--color-surface);
+  --border: var(--color-border);
+  --text: var(--color-text);
+  --muted: var(--color-muted);
+}
 
+/* Reset Base */
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', sans-serif;
@@ -26,6 +48,57 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+@utility dashboard-card-premium {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+@utility btn-primary {
+  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-light));
+  color: #fff;
+  padding: 0.9rem 2.2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(108, 59, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(108, 59, 255, 0.6);
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-brand-light), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility pulse-brand {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
 }
 
 /* ── NAV ── */
@@ -108,8 +181,7 @@ h1 {
   line-height: 1.05; max-width: 900px; margin-bottom: 1.5rem;
 }
 h1 .highlight {
-  background: linear-gradient(135deg, var(--brand-light), var(--accent));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  @apply text-gradient;
 }
 .hero-sub {
   font-size: 1.15rem; color: var(--muted); max-width: 620px;
