@@ -1,12 +1,70 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Shield, Mail, Lock, ChevronRight, Github } from 'lucide-react';
-import Link from 'next/link';
+import { Shield, Mail, Lock, ChevronRight, User, Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
+import { toast } from 'sonner';
 
 export default function LoginPage() {
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Form States
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      if (isLogin) {
+        // LOGIN FLOW
+        const result = await signIn('credentials', {
+          email,
+          password,
+          redirect: false,
+        });
+
+        if (result?.error) {
+          toast.error('Credenciales inválidas. Por favor intente de nuevo.');
+        } else {
+          toast.success('¡Bienvenido de nuevo!');
+          router.push('/app/dashboard');
+          router.refresh();
+        }
+      } else {
+        // REGISTRATION FLOW
+        const res = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Error al registrar la cuenta');
+        }
+
+        toast.success('Cuenta creada exitosamente. Iniciando sesión...');
+        
+        // Auto Login after registration
+        await signIn('credentials', {
+          email,
+          password,
+          callbackUrl: '/app/dashboard',
+        });
+      }
+    } catch (error: any) {
+      toast.error(error.message || 'Ocurrió un error inesperado');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-6 relative overflow-hidden">
@@ -18,7 +76,7 @@ export default function LoginPage() {
 
       <div className="w-full max-w-[450px] relative z-10">
         <div className="text-center mb-10">
-          <div className="inline-flex w-16 h-16 bg-brand rounded-2xl items-center justify-center pulse-brand mb-6 mx-auto">
+          <div className="inline-flex w-16 h-16 bg-brand rounded-2xl items-center justify-center animate-pulse mb-6 mx-auto">
             <Shield className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-4xl font-black tracking-tighter mb-2 text-gradient">
@@ -28,10 +86,12 @@ export default function LoginPage() {
         </div>
 
         <div className="dashboard-card-premium p-8 shadow-2xl">
-          <div className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <button 
-              onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
-              className="w-full py-4 px-6 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center gap-3 font-bold hover:bg-white/10 transition-all text-sm"
+              type="button"
+              disabled={isLoading}
+              onClick={() => signIn('google', { callbackUrl: '/app/dashboard' })}
+              className="w-full py-4 px-6 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center gap-3 font-bold hover:bg-white/10 transition-all text-sm disabled:opacity-50"
             >
               <img src="https://www.google.com/favicon.ico" className="w-4 h-4" alt="Google" />
               Continuar con Google
@@ -47,12 +107,32 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-4">
+              {!isLogin && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2 mb-2 block">Nombre Completo</label>
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <input 
+                      type="text" 
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Juan Pérez"
+                      className="w-full bg-black border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:border-brand/50 transition-colors"
+                    />
+                  </div>
+                </div>
+              )}
+
               <div>
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2 mb-2 block">Email</label>
                 <div className="relative">
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                   <input 
                     type="email" 
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
                     className="w-full bg-black border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:border-brand/50 transition-colors"
                   />
@@ -65,6 +145,9 @@ export default function LoginPage() {
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                   <input 
                     type="password" 
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     className="w-full bg-black border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:border-brand/50 transition-colors"
                   />
@@ -72,16 +155,27 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <button className="btn-primary w-full py-4 rounded-2xl flex items-center justify-center gap-2 group">
-              {isLogin ? 'Iniciar Sesión' : 'Registrar Cuenta'}
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <button 
+              type="submit"
+              disabled={isLoading}
+              className="btn-primary w-full py-4 rounded-2xl flex items-center justify-center gap-2 group disabled:opacity-50"
+            >
+              {isLoading ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                <>
+                  {isLogin ? 'Iniciar Sesión' : 'Registrar Cuenta'}
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
             </button>
-          </div>
+          </form>
         </div>
 
         <p className="text-center mt-8 text-gray-500 text-sm">
           {isLogin ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?'}
           <button 
+            type="button"
             onClick={() => setIsLogin(!isLogin)}
             className="ml-2 text-brand font-bold hover:underline"
           >

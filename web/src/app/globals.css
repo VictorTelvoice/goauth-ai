@@ -102,7 +102,7 @@ body {
 }
 
 /* ── NAV ── */
-nav {
+.public-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 5%;
@@ -110,6 +110,13 @@ nav {
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
+
+.public-nav ul { list-style: none; display: flex; gap: 2rem; }
+.public-nav ul li a {
+  color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.public-nav ul li a:hover { color: var(--text); }
 .logo {
   font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em;
   color: #fff;
@@ -123,12 +130,6 @@ nav {
 .logo .logo-dotai {
   color: var(--brand-light);
 }
-nav ul { list-style: none; display: flex; gap: 2rem; }
-nav ul li a {
-  color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500;
-  transition: color 0.2s;
-}
-nav ul li a:hover { color: var(--text); }
 .nav-cta {
   background: var(--brand); color: #fff !important;
   padding: 0.5rem 1.25rem; border-radius: 8px;

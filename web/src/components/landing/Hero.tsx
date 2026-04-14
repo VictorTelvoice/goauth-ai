@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const Navbar = () => {
   return (
-    <nav>
+    <nav className="public-nav">
       <Link href="/" className="logo">
         Go<span className="logo-auth">Auth</span><span className="logo-dotai">.ai</span>
       </Link>

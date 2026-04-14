@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import { Navbar } from '@/components/landing/Hero';
 import { Footer } from '@/components/landing/Footer';
 
@@ -7,13 +10,16 @@ export default function PublicLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isAuthPage = pathname === '/login' || pathname === '/register';
+
   return (
     <div className="bg-black min-h-screen">
-      <Navbar />
+      {!isAuthPage && <Navbar />}
       <main>
         {children}
       </main>
-      <Footer />
+      {!isAuthPage && <Footer />}
     </div>
   );
 }
